@@ -6,3 +6,11 @@ $('#footer').append(currentDate);
 
 
 
+
+
+let apiKey = require('./apiKey');
+
+
+
+apiKey.retrieveKeys();
+
