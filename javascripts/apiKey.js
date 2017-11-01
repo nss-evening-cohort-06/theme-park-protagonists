@@ -17,6 +17,8 @@ const retrieveKeys = () => {
 	apiKeys().then((results) => {
 		themePark.setKey(results.apiKey);
 		firebaseApi.setKey(results);
+		firebase.initializeApp(results.firebaseKeys);
+		firebaseApi.areasJSON();
 	}).catch((error) => {
 		console.log('error in retrieve keys', error);
 	});
