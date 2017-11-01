@@ -1,4 +1,5 @@
 'use strict';
 
+let events = require('./events');
 
-console.log("hello");
+events.initialize();
