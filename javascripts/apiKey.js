@@ -1,12 +1,11 @@
 "use strict";
-
 const themePark = require('./themePark');
 const firebaseApi = require('./firebaseApi');
 
 const apiKeys = () => {
 	return new Promise((resolve, reject) => {
 		$.ajax('./db/firebaseKey.json').done((data) => {
-			resolve (data.firebaseKeys);
+			resolve(data.firebaseKeys);
 		}).fail((error) => {
 			reject(error);
 		});
@@ -22,4 +21,7 @@ const retrieveKeys = () => {
 	});
 };
 
-module.exports = {retrieveKeys};
+
+
+
+module.exports = { retrieveKeys };

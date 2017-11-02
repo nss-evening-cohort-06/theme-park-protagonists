@@ -8,31 +8,53 @@
 
 <body>
   <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+          aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Brand</a>
-    </div>
+        <a class="navbar-brand" href="#">Brand</a>
+      </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    
+      <!-- Collect the nav links, forms, and other content for toggling -->
+
       <form class="navbar-form text-align-center">
         <div class="form-group col-md-6">
           <input type="text" id="searchBox" class="form-control" placeholder="Search">
         </div>
       </form>
-    </div><!-- /.navbar-collapse -->
+    </div>
+    <!-- /.navbar-collapse -->
 
-</nav>
+  </nav>
 
-
-    <div id="current-shows"></div>
+  <div class="btn-group show-time-dropdown">
+    <button id="show-times" class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+      aria-expanded="false">
+    Show Times <span class="caret"></span>
+  </button>
+    <ul class="dropdown-menu">
+      <li><a class="time-item" id="9:00AM" href='#'>9:00AM</a></li>
+      <li><a class="time-item" id="10:00AM" href='#'>10:00AM</a></li>
+      <li><a class="time-item" id="11:00AM" href='#'>11:00AM</a></li>
+      <li><a class="time-item" id="12:00AM" href='#'>12:00PM</a></li>
+      <li><a class="time-item" id="1:00PM" href='#'>1:00PM</a></li>
+      <li><a class="time-item" id="2:00PM" href='#'>2:00PM</a></li>
+      <li><a class="time-item" id="3:00PM" href='#'>3:00PM</a></li>
+      <li><a class="time-item" id="4:00PM" href='#'>4:00PM</a></li>
+      <li><a class="time-item" id="5:00PM" href='#'>5:00PM</a></li>
+      <li><a class="time-item" id="6:00PM" href='#'>6:00PM</a></li>
+      <li><a class="time-item" id="7:00PM" href='#'>7:00PM</a></li>
+      <li><a class="time-item" id="8:00PM" href='#'>8:00PM</a></li>
+      <li><a class="time-item" id="9:00PM" href='#'>9:00PM</a></li>
+    </ul>
+  </div>
+  <div id="current-shows"></div>
 
 
 
