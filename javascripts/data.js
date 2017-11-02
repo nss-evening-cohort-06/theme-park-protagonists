@@ -2,10 +2,18 @@
 
 const dom = require('./dom');
 
-let AttractionsArray = [];
-let Attractions_TypesArray = [];
+let AttrArray = [];
+let TypesArray = [];
 let AreasArray = [];
 let AreasAndAttrObject = {};
+let joinedArea_Attr = [];
+let jointedAttr_Type = [];
+
+
+const equijoin = (xs, ys, primary, foreign, sel) => {
+    const ix = xs.reduce((ix, row) => ix.set(row[primary], row), new Map());
+    return ys.map(row => sel(ix.get(row[foreign]), row));
+};
 
 let getAttractionsJSON = () => {
 	return new Promise(function(resolve, reject) {
@@ -39,13 +47,13 @@ let getAreasJSON = () => {
 
 let getAllData = () => {
 	Promise.all([getAttractionsJSON(), getAttraction_TypesJSON(), getAreasJSON()]).then(function(results) { 
-			AttractionsArray 			= results[0];
-			Attractions_TypesArray 		= results[1];
-			AreasArray 					= results[2];
+			AttrArray 	= results[0];
+			TypesArray 		= results[1];
+			AreasArray 		= results[2];
 
-			// Replace type_id and area_id numbers with actual names
-			AttractionsArray.forEach(function(Attraction){
-				Attractions_TypesArray.forEach(function(Type) {
+// Replace type_id and area_id numbers with actual names
+			AttrArray.forEach(function(Attraction){
+				TypesArray.forEach(function(Type) {
 					if (Type.id === Attraction.type_id) {
 						Attraction.type_id = Type.name;
 					}
@@ -56,34 +64,29 @@ let getAllData = () => {
 					}
 				});
 			});
-			// console.log(AttractionsArray);
-			dom.printLeftDiv(AttractionsArray.slice(0,10));
+			//dom.printLeftDiv(AttrArray.slice(0,10));
+			dom.printToMainDiv(AreasArray);
 
-			// Create object with area names as keys and an array of attractions in that area as values 
-			for(let i = 0; i < AreasArray.length; i++) {
-				let areaName = AreasArray[i].name;
-				AreasAndAttrObject[areaName] = [];
-			}
-
-			AttractionsArray.forEach(function(Attraction) {
-				let objectKeys = Object.keys(AreasAndAttrObject);
-				for (let i = 0; i < objectKeys.length; i++) {
-					let attractionAreaName = Attraction.area_id;
-					let areaName = objectKeys[i];
-
-					 // console.log(attractionAreaName, areaName);
-					if (areaName === attractionAreaName) {
-						console.log(Attraction.name);
-						AreasAndAttrObject[areaName].push(Attraction.name);
-					}
-				}
-			});
-
-			console.log("AreasAndAttrObject", AreasAndAttrObject);
+			console.log('AttrArray', AttrArray);
+			console.log('TypesArray', TypesArray);
+			console.log('AreasArray',AreasArray);
 
 	}).catch(function(error){
 		console.log("error from Promise.all", error);
 	});
 };
 
-module.exports = {getAllData};
+const getAttracts = (parkId) => {
+	let tempArray = [];
+	let parkName = AreasArray[parkId-1].name;
+	console.log(parkName);
+
+	AttrArray.forEach(function(attr) {
+		if(attr.area_id === parkName)
+			tempArray.push(attr);
+	}); 
+	console.log('getAttracts - parkName', parkName);
+	dom.printLeftDiv(tempArray);
+};
+
+module.exports = {getAllData, getAttracts};
