@@ -51,7 +51,7 @@ let getAllData = () => {
 			TypesArray 		= results[1];
 			AreasArray 		= results[2];
 
-// Replace type_id and area_id numbers with actual names
+			// Replace type_id and area_id numbers with actual names
 			AttrArray.forEach(function(Attraction){
 				TypesArray.forEach(function(Type) {
 					if (Type.id === Attraction.type_id) {
@@ -65,12 +65,10 @@ let getAllData = () => {
 				});
 			});
 			//dom.printLeftDiv(AttrArray.slice(0,10));
-			dom.printToMainDiv(AreasArray);
-
-			console.log('AttrArray', AttrArray);
-			console.log('TypesArray', TypesArray);
-			console.log('AreasArray',AreasArray);
-
+			// console.log('AttrArray', AttrArray);
+			// console.log('TypesArray', TypesArray);
+			// console.log('AreasArray',AreasArray);
+			dom.printToMainDiv(AreasArray);  // initially prints park areas to the DOM
 	}).catch(function(error){
 		console.log("error from Promise.all", error);
 	});
