@@ -5,15 +5,6 @@ const dom = require('./dom');
 let AttrArray = [];
 let TypesArray = [];
 let AreasArray = [];
-let AreasAndAttrObject = {};
-let joinedArea_Attr = [];
-let jointedAttr_Type = [];
-
-
-const equijoin = (xs, ys, primary, foreign, sel) => {
-    const ix = xs.reduce((ix, row) => ix.set(row[primary], row), new Map());
-    return ys.map(row => sel(ix.get(row[foreign]), row));
-};
 
 let getAttractionsJSON = () => {
 	return new Promise(function(resolve, reject) {
