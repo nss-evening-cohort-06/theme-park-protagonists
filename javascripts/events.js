@@ -7,12 +7,8 @@ $('.time-item').click(function () {
   const startTime = moment(timeString, 'HH:mm a');
   const endTime = startTime.clone().add(59, 'm');
   const attractionTime = themePark.getAttractionsBetween(startTime, endTime);
-  dom.showString(attractionTime);
-  $('.jumbotron').removeClass('hidden');
+  //insert write to dom for left panel
+  console.log(attractionTime);
 });
 
-$('.jumbo-close').click(() => {
-  $('#current-shows').empty();
-  $('.jumbotron').addClass('hidden');
-});
 
