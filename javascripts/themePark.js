@@ -1,7 +1,7 @@
 "use strict";
 let themeParkKey;
 let attractionsWithTimes = [];
-
+let firebaseKey = "";
 
 const setKey = (apiKey) => {
   themeParkKey = apiKey;

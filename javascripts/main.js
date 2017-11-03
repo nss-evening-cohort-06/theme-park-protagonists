@@ -7,7 +7,6 @@ const events = require('./events');
 const currentDate = moment().format("MMM DD, YYYY");
 $('#footer').append(currentDate);
 
-
 themePark.getAttractions();
 apiKey.retrieveKeys();
 
