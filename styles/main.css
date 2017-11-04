@@ -13,3 +13,20 @@ div.description {
 
 .park {
   border: 1px solid black; }
+
+#footer {
+  margin-left: 43%;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  position: fixed;
+  bottom: 0;
+  left: 0; }
+
+#searchBox {
+  width: 600px;
+  margin-left: 200px;
+  border-radius: 14px; }
+
+.area {
+  border: solid black 2px;
+  height: 300px; }
