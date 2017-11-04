@@ -14,13 +14,12 @@ const setKey = (key) => {
 
 const areasJSON = () => {
 	return new Promise((resolve, reject) => {
-		$.ajax(`${firebaseKey.databaseURL}/areas.json`).then((results) => {
+		$.ajax('./db/areas.json').then((results) => {
 			resolve(results);
 		}).catch((err) => {
 			reject(err);
 		});
 	});
 };
-
 
 module.exports = { setKey, areasJSON };

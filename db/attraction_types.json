@@ -1,5 +1,5 @@
 {
-"attraction_types":[
+    "attraction_types": [
         {
             "id": 1,
             "name": "ride"
