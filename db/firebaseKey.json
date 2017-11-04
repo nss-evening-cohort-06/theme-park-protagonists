@@ -1,0 +1,10 @@
+{
+  "firebaseKeys": {
+	"apiKey": "AIzaSyBuQOk_bI0pzFldcNSdDPsfsU-H-BegMcI",
+    "authDomain": "theme-park-c35a0.firebaseapp.com",
+    "databaseURL": "https://theme-park-c35a0.firebaseio.com",
+    "projectId": "theme-park-c35a0",
+    "storageBucket": "theme-park-c35a0.appspot.com",
+    "messagingSenderId": "857803439305"
+ }
+}

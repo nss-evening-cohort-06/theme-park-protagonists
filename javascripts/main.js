@@ -1,0 +1,13 @@
+'use strict';
+
+let events = require('./events');
+
+events.initialize();
+
+//grabs and formats current date and appends to footer
+const currentDate = moment().format("MMM DD, YYYY");
+$('#footer').append(currentDate);
+
+let apiKey = require('./apiKey');
+
+apiKey.retrieveKeys();
