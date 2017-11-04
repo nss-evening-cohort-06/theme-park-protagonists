@@ -34,3 +34,4 @@ const printToMainDiv = (areaArray) => {
 };
 
 module.exports = {printLeftDiv, printToMainDiv};
+
