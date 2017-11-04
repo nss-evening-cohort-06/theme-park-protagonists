@@ -8,8 +8,10 @@ const data = require('./data');
 const currentDate = moment().format("MMM DD, YYYY");
 $('#footer').append(currentDate);
 
-// themePark.getAttractions();
+
+
 apiKey.retrieveKeys();
 events.initialize();
 data.getAttractionsJSON();
+data.showCurrentAttraction();
 
