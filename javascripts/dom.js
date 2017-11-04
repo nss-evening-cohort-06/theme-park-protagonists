@@ -8,7 +8,7 @@ const printLeftDivTimes = (timeArray) => {
   clearLeftDiv();
   let domString = "";
   for (let i = 0; i < timeArray.length; i++) {
-    domString += `<div class="attraction-time-name><a href='#'><h3>${timeArray[i].name}</h3></a> (${timeArray[i].area_id})</div>`;
+    domString += `<div class="attraction-time-name"><a href='#'>${timeArray[i].name}</a> (${timeArray[i].area_id})</div>`;
   }
   $('#div-left-menu').append(domString);
 };

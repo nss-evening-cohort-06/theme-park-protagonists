@@ -6,6 +6,7 @@ let TypesArray = [];
 let AreasArray = [];
 let attractionsWithTimes = [];
 
+
 const setKey = (key) => {
 	firebaseKey = key;
 };
@@ -101,4 +102,13 @@ const getAttractionsBetween = (startTime, endTime) => {
 	});
 };
 
-module.exports = { getAllData, getAttracts, getAttractionsJSON, getAttractionsBetween };
+const showCurrentAttraction = () => {
+	let currentTime = moment().format('HH:mm a');
+	for (let i = 0; i < attractionsWithTimes; i++) {
+
+	}
+
+};
+
+
+module.exports = { getAllData, getAttracts, getAttractionsJSON, getAttractionsBetween, showCurrentAttraction };
