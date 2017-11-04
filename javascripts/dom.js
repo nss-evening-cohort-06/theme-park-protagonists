@@ -10,7 +10,7 @@ const printLeftDiv = (attrArray) => {
 	for(let i = 0; i < attrArray.length; i++)  {
 		let attrObject = attrArray[i];
 		domString +=   `<div id="attaction-${i}" >`;
-	    domString +=	`	<a class="attraction">${attrArray[i].name}</a>`;
+	    domString +=	`	<a class="attraction">${attrArray[i].name}&nbsp(${attrArray[i].type_id})</a>`;
 	    domString +=	`	<div id="description-${i}" class="description">`;
 	    domString +=	`		<p>${attrArray[i].description}</p>`;
 	    domString +=	`	</div>`;
