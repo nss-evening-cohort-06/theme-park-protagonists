@@ -1,81 +1,104 @@
 "use strict";
-
 const dom = require('./dom');
-
+let firebaseKey = "";
 let AttrArray = [];
 let TypesArray = [];
 let AreasArray = [];
+let attractionsWithTimes = [];
+
+const setKey = (key) => {
+	firebaseKey = key;
+};
 
 let getAttractionsJSON = () => {
-	return new Promise(function(resolve, reject) {
-		$.ajax('./db/attractions.json').done(function(data){
+	return new Promise(function (resolve, reject) {
+		$.ajax('./db/attractions.json').done(function (data) {
 			resolve(data.attractions);
-		}).fail(function(error){
+		}).fail(function (error) {
 			reject(error);
 		});
 	});
 };
 
 let getAttraction_TypesJSON = () => {
-	return new Promise(function(resolve, reject) {
-		$.ajax('./db/attraction_types.json').done(function(data){
+	return new Promise(function (resolve, reject) {
+		$.ajax('./db/attraction_types.json').done(function (data) {
 			resolve(data.attraction_types);
-		}).fail(function(error){
+		}).fail(function (error) {
 			reject(error);
 		});
 	});
 };
 
 let getAreasJSON = () => {
-	return new Promise(function(resolve, reject) {
-		$.ajax(`${firebaseKey.databaseURL}/areas.json`).done(function(data){
+	return new Promise(function (resolve, reject) {
+		$.ajax('./db/areas.json').done(function (data) {
 			resolve(data.areas);
-		}).fail(function(error){
+		}).fail(function (error) {
 			reject(error);
 		});
 	});
 };
 
 let getAllData = () => {
-	Promise.all([getAttractionsJSON(), getAttraction_TypesJSON(), getAreasJSON()]).then(function(results) { 
-			AttrArray 	= results[0];
-			TypesArray 		= results[1];
-			AreasArray 		= results[2];
+	Promise.all([getAttractionsJSON(), getAttraction_TypesJSON(), getAreasJSON()]).then(function (results) {
+		AttrArray = results[0];
+		TypesArray = results[1];
+		AreasArray = results[2];
 
-			// Replace type_id and area_id numbers with actual names
-			AttrArray.forEach(function(Attraction){
-				TypesArray.forEach(function(Type) {
-					if (Type.id === Attraction.type_id) {
-						Attraction.type_id = Type.name;
-					}
-				});
-				AreasArray.forEach(function(Area) {
-					if (Area.id === Attraction.area_id) {
-						Attraction.area_id = Area.name;
-					}
-				});
+		// Replace type_id and area_id numbers with actual names
+		AttrArray.forEach(function (Attraction) {
+			TypesArray.forEach(function (Type) {
+				if (Type.id === Attraction.type_id) {
+					Attraction.type_id = Type.name;
+				}
 			});
-			//dom.printLeftDiv(AttrArray.slice(0,10));
-			// console.log('AttrArray', AttrArray);
-			// console.log('TypesArray', TypesArray);
-			// console.log('AreasArray',AreasArray);
-			dom.printToMainDiv(AreasArray);  // initially prints park areas to the DOM
-	}).catch(function(error){
+			AreasArray.forEach(function (Area) {
+				if (Area.id === Attraction.area_id) {
+					Attraction.area_id = Area.name;
+				}
+			});
+		});
+		for (let i = 0; i < AttrArray.length; i++) {
+			if (AttrArray[i].times != null) {
+				attractionsWithTimes.push(AttrArray[i]);
+			}
+		}
+		//dom.printLeftDiv(AttrArray.slice(0,10));
+		// console.log('TypesArray', TypesArray);
+		// console.log('AreasArray',AreasArray);
+		dom.printToMainDiv(AreasArray);  // initially prints park areas to the DOM
+	}).catch(function (error) {
 		console.log("error from Promise.all", error);
 	});
 };
 
 const getAttracts = (parkId) => {
 	let tempArray = [];
-	let parkName = AreasArray[parkId-1].name;
-	console.log(parkName);
+	let parkName = AreasArray[parkId - 1].name;
+	// console.log(parkName);
 
-	AttrArray.forEach(function(attr) {
-		if(attr.area_id === parkName)
+	AttrArray.forEach(function (attr) {
+		if (attr.area_id === parkName)
 			tempArray.push(attr);
-	}); 
-	console.log('getAttracts - parkName', parkName);
+	});
+	// console.log('getAttracts - parkName', parkName);
 	dom.printLeftDiv(tempArray);
 };
 
-module.exports = {getAllData, getAttracts};
+//takes in start/end time from click event
+//filters through the attractions with times
+//formats attraction time to moment object, if time falls between start and end (moment method), return
+const getAttractionsBetween = (startTime, endTime) => {
+	return attractionsWithTimes.filter((attraction) => {
+		for (let i = 0; i < attraction.times.length; i++) {
+			const timeString = attraction.times[i];
+			const time = moment(timeString, 'HH:mm a');
+			if (time.isBetween(startTime, endTime)) {
+				return true;
+			}
+		}
+	});
+};
+
+module.exports = { getAllData, getAttracts, getAttractionsJSON, getAttractionsBetween };
