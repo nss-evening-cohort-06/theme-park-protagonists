@@ -1,7 +1,6 @@
 {
   "name": "lib",
   "version": "1.0.0",
-  "description": "",
   "main": "Gruntfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -23,5 +22,10 @@
     "bootstrap": "^3.3.7",
     "jquery": "^3.2.1",
     "moment": "^2.19.1"
+<<<<<<< HEAD
+  },
+  "description": ""
+=======
   }
+>>>>>>> 3e3bbb2cc3405dd693feaa395143c5b495ce6e5f
 }

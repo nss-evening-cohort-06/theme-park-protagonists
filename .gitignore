@@ -1,6 +1,6 @@
 .DS_Store
 lib/node_modules
 dist/app.js
+db/firebaseKey.json
 styles/main.css
 db/firebaseKey.json 
-

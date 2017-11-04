@@ -9,5 +9,6 @@ $('#footer').append(currentDate);
 
 themePark.getAttractions();
 apiKey.retrieveKeys();
+events.initialize();
 
 
