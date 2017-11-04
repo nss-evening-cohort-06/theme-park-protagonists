@@ -34,6 +34,18 @@ const initialize = () => {
 	data.getAllData();
 	showDescriptions();
 	displayAttractions();
+	pressEnter();
+};
+
+const pressEnter = () => {
+  $('body').keypress((e) => {
+    if (e.key === 'Enter') {
+    	e.preventDefault();
+      let searchText = $('#searchBox').val();
+      console.log(searchText);
+      data.searchAttractions(searchText);
+    }
+  });
 };
 
 module.exports = {initialize};

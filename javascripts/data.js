@@ -28,7 +28,7 @@ let getAttraction_TypesJSON = () => {
 
 let getAreasJSON = () => {
 	return new Promise(function(resolve, reject) {
-		$.ajax(`${firebaseKey.databaseURL}/areas.json`).done(function(data){
+		$.ajax(`./db/areas.json`).done(function(data){
 			resolve(data.areas);
 		}).fail(function(error){
 			reject(error);
@@ -78,4 +78,22 @@ const getAttracts = (parkId) => {
 	dom.printLeftDiv(tempArray);
 };
 
-module.exports = {getAllData, getAttracts};
+const searchAttractions = (query) => {
+	AttrArray.forEach((attraction) => {
+		if(query === attraction.name) {
+			var areaName = attraction.area_id;
+			AreasArray.forEach((park) => {
+				if(areaName === park.name) {
+					var parkId = park.id;
+					console.log(attraction.area_id);
+					console.log(park.id);
+					dom.drawBorder(parkId);
+				}
+			});
+		}
+	});
+};
+
+
+
+module.exports = {getAllData, getAttracts, searchAttractions};

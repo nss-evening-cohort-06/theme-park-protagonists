@@ -2,6 +2,7 @@
 let themeParkKey;
 let attractionsWithTimes = [];
 let firebaseKey = "";
+let attractionNames = [];
 
 const setKey = (apiKey) => {
   themeParkKey = apiKey;

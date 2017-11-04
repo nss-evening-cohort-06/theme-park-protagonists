@@ -3,10 +3,7 @@
 let firebaseKey = {};
 let userUid = "";
 
-const areas = [];
-const attraction_types = [];
-const attractions = [];
-const parkInfo = [];
+
 
 const setKey = (key) => {
 	firebaseKey = key;
@@ -23,4 +20,4 @@ const areasJSON = () => {
 };
 
 
-module.exports = { setKey, areasJSON };
+module.exports = { setKey };

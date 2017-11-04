@@ -13,3 +13,38 @@ div.description {
 
 .park {
   border: 1px solid black; }
+
+#footer {
+  margin-left: 43%;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  position: fixed;
+  bottom: 0;
+  left: 0; }
+
+#searchBox {
+  width: 600px;
+  margin-left: 200px;
+  border-radius: 14px; }
+
+.show-time-dropdown {
+  margin-left: 40%;
+  margin-bottom: 25px; }
+
+#show-times {
+  width: 300px; }
+
+.dropdown-menu {
+  width: 300px;
+  text-align: center;
+  font-size: 20px; }
+
+.border {
+  border: solid orange 5px; }
+
+.area {
+  border: solid black 2px;
+  height: 300px; }
+
+.border {
+  border: solid orange 20px; }
