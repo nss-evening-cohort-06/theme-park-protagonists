@@ -11,8 +11,8 @@ $('.time-item').click(function () {
   const startTime = moment(timeString, 'HH:mm a');
   const endTime = startTime.clone().add(59, 'm');
   const attractionTime = data.getAttractionsBetween(startTime, endTime);
-  dom.printLeftDivTimes(attractionTime);
-  console.log(attractionTime);
+  dom.printLeftDiv(attractionTime);
+  console.log(startTime);
 });
 
 const showDescriptions = () => {
