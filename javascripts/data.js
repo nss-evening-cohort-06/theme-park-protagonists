@@ -104,12 +104,16 @@ const getAttractionsBetween = (startTime, endTime) => {
 };
 
 const showCurrentAttraction = () => {
-	let currentTime = moment().format('HH:mm a');
+	let time = moment().format('HH:mm a');
+	let currentTime = moment(time, 'HH:mm a');
+	let currentEndTime = currentTime.clone().add(59, 'm').format('H:mm a');
+	console.log(currentEndTime);
 	for (let i = 0; i < attractionsWithTimes; i++) {
 
+		// if (attractionsWithTimes[i].isBetween(currentTime, currentEndTime)) {
+		// 	console.log(attractionsWithTimes[i]);
+		// }
 	}
-
 };
-
 
 module.exports = { getAllData, getAttracts, getAttractionsJSON, getAttractionsBetween, showCurrentAttraction };
