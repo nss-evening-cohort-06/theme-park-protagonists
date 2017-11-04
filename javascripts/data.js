@@ -28,7 +28,7 @@ let getAttraction_TypesJSON = () => {
 
 let getAreasJSON = () => {
 	return new Promise(function(resolve, reject) {
-		$.ajax('./db/areas.json').done(function(data){
+		$.ajax(`${firebaseKey.databaseURL}/areas.json`).done(function(data){
 			resolve(data.areas);
 		}).fail(function(error){
 			reject(error);
