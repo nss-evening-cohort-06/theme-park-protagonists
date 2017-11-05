@@ -9,15 +9,16 @@ const setKey = (key) => {
 	firebaseKey = key;
 };
 
-const areasJSON = () => {
-	return new Promise((resolve, reject) => {
-		$.ajax(`${firebaseKey.databaseURL}/areas.json`).then((results) => {
-			resolve(results);
-		}).catch((err) => {
-			reject(err);
-		});
-	});
-};
+// const areasJSON = () => {
+// 	return new Promise((resolve, reject) => {
+// 		$.ajax('./db/areas.json').then((results) => {
+// 			resolve(results);
+// 		}).catch((err) => {
+// 			reject(err);
+// 		});
+// 	});
+// };
 
 
-module.exports = { setKey };
+module.exports = { setKey,};
+
