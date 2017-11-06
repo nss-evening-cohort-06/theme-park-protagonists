@@ -44,31 +44,45 @@ const pressEnter = () => {
   $('body').keypress((e) => {
     if (e.key === 'Enter') {
     	e.preventDefault();
+      // let attrData = data.getAttractionData();
       let searchText = $('#searchBox').val();
-      let attractionData = data.getAttractionData();
-      console.log("attraction data", attractionData);
-      var results = attractionData.filter((searchText) => {
-        searchText.toLowerCase().indexOf(attractionData.toLowerCase()) > -1;
-        console.log("results", results);
-
-        new Awesomplete('input[attractionData]', {
-  filter: function(searchText, attractionData) {
-    return Awesomplete.FILTER_CONTAINS(searchText, input.match(/[^,]*$/)[0]);
-  },
-
-
-      });
-  }
-});
-        
-    //     return results.indexOf(searchText)> -1;
-
-
-    //     return fruits.filter((el) =>
-    // el.toLowerCase().indexOf(query.toLowerCase()) > -1
-  };
+      let query = searchText.toLowerCase();
+      // let filterArray = attrData.filter(function(el) {
+      //   let lowerCase = el.name.toLowerCase();
+      //   return lowerCase.includes(query);
+      // });
+      console.log(filterArray);
+      // let attractionData = 
+      data.searchAttractions(query); 
+      // return attractionData; 
+      }
+  });
+};
 
    
+// const pressEnter = () => {
+//   $('body').keypress((e) => {
+//     if(e.key === "enter") {
+//       e.preventDefault();
+
+//     }
+//   });
+// };
+      
+    
+
+      
+      // console.log("attraction data", attractionData);
+      // var results = attractionData.filter((searchText) => {
+      //   searchText.toLowerCase().indexOf(attractionData.toLowerCase()) > -1;
+      //   console.log("results", results);
+
+  //       new Awesomplete('input[attractionData]', {
+  // filter: function(searchText, attractionData) {
+  //   return Awesomplete.FILTER_CONTAINS(searchText, input.match(/[^,]*$/)[0]);
+  // },
+
+
 
 
 

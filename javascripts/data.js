@@ -1,5 +1,7 @@
 "use strict";
 const dom = require('./dom');
+// const events = require('./events');
+
 let firebaseKey = "";
 let AttrArray = [];
 let TypesArray = [];
@@ -93,20 +95,38 @@ const getAttracts = (parkId) => {
 };
 
 const searchAttractions = (query) => {
-	AttrArray.forEach((attraction) => {
-		if(query === attraction.name) {
-			var areaName = attraction.area_id;
-			AreasArray.forEach((park) => {
-				if(areaName === park.name) {
-					var parkId = park.id;
-					console.log(attraction.area_id);
-					console.log(park.id);
-					dom.drawBorder(parkId);
-				}
-			});
+	let filterArray = getAttractionData.filter(function(el) {
+        let lowerCase = el.name.toLowerCase();
+        return lowerCase.includes(query);
+      });
+		
+		var areaName = attraction.area_id;
+		AreasArray.forEach((park) => {
+			if(areaName === park.name) {
+				var parkId = park.id;
+				console.log(attraction.area_id);
+				console.log(park.id);
+				dom.drawBorder(parkId);
 		}
 	});
-};
+	
+	};		
+
+// 	// AttrArray.forEach((attraction) => {		
+// 	// 	if(results === attraction.name) {
+// 	// 		console.log(attraction);
+// 	// 		var areaName = attraction.area_id;
+// 	// 		AreasArray.forEach((park) => {
+// 	// 			if(areaName === park.name) {
+// 	// 				var parkId = park.id;
+// 	// 				console.log(attraction.area_id);
+// 	// 				console.log(park.id);
+// 	// 				dom.drawBorder(parkId);
+// 				}
+// 			});
+// 		}
+// 	});
+// };
 
 
 //takes in start/end time from click event
@@ -134,5 +154,5 @@ const showCurrentAttraction = () => {
 };
 
 
-module.exports = { getAllData, getAttracts, getAttractionsJSON, getAttractionsBetween, showCurrentAttraction, searchAttractions, getAttractionData };
+module.exports = { getAllData, getAttracts, getAttractionsJSON, getAttractionsBetween, showCurrentAttraction, searchAttractions, getAttractionData};
 
