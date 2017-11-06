@@ -25,10 +25,10 @@ const showDescriptions = () => {
 const displayAttractions = () => {
   $('body').on('click', '.area', function (e) {
     let target = e.target.closest('.park');
-    console.log(e.target, target);
+    // console.log(e.target, target);
     let parkId = $(target).attr('id').split('-');
     parkId = parkId[1];
-    console.log('parkId', parkId);
+    // console.log('parkId', parkId);
     data.getAttracts(parkId);
   });
 };
