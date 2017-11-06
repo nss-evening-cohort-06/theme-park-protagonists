@@ -12,7 +12,6 @@ $('.time-item').click(function () {
   const endTime = startTime.clone().add(59, 'm');
   const attractionTime = data.getAttractionsBetween(startTime, endTime);
   dom.printLeftDiv(attractionTime);
-  console.log(startTime);
 });
 
 const showDescriptions = () => {

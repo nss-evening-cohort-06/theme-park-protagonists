@@ -13,5 +13,5 @@ $('#footer').append(currentDate);
 apiKey.retrieveKeys();
 events.initialize();
 data.getAttractionsJSON();
-data.showCurrentAttraction();
+
 
