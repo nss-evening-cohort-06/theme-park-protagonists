@@ -44,30 +44,23 @@ const pressEnter = () => {
   $('body').keypress((e) => {
     if (e.key === 'Enter') {
     	e.preventDefault();
-      // let attrData = data.getAttractionData();
+      let attrData = data.getAttractionData();
       let searchText = $('#searchBox').val();
       let query = searchText.toLowerCase();
-      // let filterArray = attrData.filter(function(el) {
-      //   let lowerCase = el.name.toLowerCase();
-      //   return lowerCase.includes(query);
-      // });
-      console.log(filterArray);
-      // let attractionData = 
+
+      let filterArray = attrData.filter(function(el) {
+        let lowerCase = el.name.toLowerCase();
+        return lowerCase.includes(query);
+
+      });
       data.searchAttractions(query); 
-      // return attractionData; 
+      console.log("lowercase", filterArray);
       }
   });
 };
 
    
-// const pressEnter = () => {
-//   $('body').keypress((e) => {
-//     if(e.key === "enter") {
-//       e.preventDefault();
 
-//     }
-//   });
-// };
       
     
 

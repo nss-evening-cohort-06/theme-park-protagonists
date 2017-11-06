@@ -94,39 +94,23 @@ const getAttracts = (parkId) => {
 	dom.printLeftDiv(tempArray);
 };
 
-const searchAttractions = (query) => {
-	let filterArray = getAttractionData.filter(function(el) {
-        let lowerCase = el.name.toLowerCase();
-        return lowerCase.includes(query);
-      });
-		
-		var areaName = attraction.area_id;
-		AreasArray.forEach((park) => {
-			if(areaName === park.name) {
-				var parkId = park.id;
-				console.log(attraction.area_id);
-				console.log(park.id);
-				dom.drawBorder(parkId);
+const searchAttractions = (query) => {	
+
+	AttrArray.forEach((attraction) => {
+		if(query === attraction.name) {
+			var areaName = attraction.area_id;
+			AreasArray.forEach((park) => {
+				if(areaName === park.name) {
+					var parkId = park.id;
+					console.log(attraction.area_id);
+					console.log(park.id);
+					dom.drawBorder(parkId);
+				}
+			});
 		}
 	});
-	
-	};		
+};
 
-// 	// AttrArray.forEach((attraction) => {		
-// 	// 	if(results === attraction.name) {
-// 	// 		console.log(attraction);
-// 	// 		var areaName = attraction.area_id;
-// 	// 		AreasArray.forEach((park) => {
-// 	// 			if(areaName === park.name) {
-// 	// 				var parkId = park.id;
-// 	// 				console.log(attraction.area_id);
-// 	// 				console.log(park.id);
-// 	// 				dom.drawBorder(parkId);
-// 				}
-// 			});
-// 		}
-// 	});
-// };
 
 
 //takes in start/end time from click event
