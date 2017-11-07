@@ -30,6 +30,9 @@ div.description {
   border: 1px solid black;
   display: none; }
 
+div.parkDescription {
+  font-style: italic; }
+
 #theme-park {
   width: 70%; }
 
@@ -60,7 +63,8 @@ div.description {
 
 .area {
   border: solid black 2px;
-  height: 300px; }
+  height: 300px;
+  overflow: scroll; }
 
 .blank {
   border: 0px; }

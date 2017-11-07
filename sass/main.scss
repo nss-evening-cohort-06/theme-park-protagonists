@@ -11,7 +11,10 @@
 div.description {
 	border: 1px solid black;
 	display: none;
+}
 
+div.parkDescription {
+	font-style: italic;
 }
 
 #theme-park {
@@ -52,6 +55,7 @@ div.description {
 .area {
 	border: solid black 2px;
 	height: 300px;
+	overflow: scroll;
 }
 
 .blank {

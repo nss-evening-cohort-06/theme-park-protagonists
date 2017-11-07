@@ -31,9 +31,9 @@ const printToMainDiv = (areaArray) => {
       domString += `<div class="col-md-4 area park blank"><h2></h2></div>`;
       domString += `<div class="col-md-4 area park blank"><h2></h2></div>`;
     }
-      domString += `<div id="area-${areaArray[i].id}" class="col-md-4 area park">`;
-      domString += `	<h4>${areaArray[i].name}</h4>`;
-      domString += `	<div id="description-${areaArray[i].id}" class="description">`;
+      domString += `<div id="area-${areaArray[i].id}" class="col-md-4 area park text-center">`;
+      domString += `	<h2>${areaArray[i].name}</h2>`;
+      domString += `	<div id="description-${areaArray[i].id}" class="parkDescription">`;
       domString += `	<p>${areaArray[i].description}</p>`;
       domString += `	</div>`;
       domString += `</div>`;
