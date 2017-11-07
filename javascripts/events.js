@@ -51,7 +51,6 @@ const pressEnter = () => {
         let lowerCase = el.name.toLowerCase();
         return lowerCase.includes(query);
       });
- 
       data.getAttractionAreas(filterArray); 
 
       }
