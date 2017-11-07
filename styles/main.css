@@ -61,13 +61,13 @@ div.parkDescription {
   text-align: center;
   font-size: 20px; }
 
-.border {
-  border: solid orange 5px; }
-
 .area {
   border: solid black 2px;
   height: 300px;
   overflow: scroll; }
+
+.border {
+  border: solid orange 5px; }
 
 .blank {
   border: 0px; }
