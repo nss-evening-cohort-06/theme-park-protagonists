@@ -25,13 +25,17 @@ const printLeftDiv = (attrArray) => {
 const printToMainDiv = (areaArray) => {
   let domString = "";
   for (let i = 0; i < areaArray.length; i++) {
-    let attrObject = areaArray[i];
-    domString += `<a class="area"> <div id="area-${areaArray[i].id}" class="col-md-3 park">`;
-    domString += `	<h4>${areaArray[i].name}</h4>`;
-    domString += `	<div id="description-${areaArray[i].id}" class="description">`;
-    domString += `	<p>${areaArray[i].description}</p>`;
-    domString += `	</div>`;
-    domString += `</div></a>`;
+    if(i === 6){
+      domString += `<div class="col-md-4 area park blank"><h2></h2></div>`;
+      domString += `<div class="col-md-4 area park blank"><h2></h2></div>`;
+    }
+      domString += `<div id="area-${areaArray[i].id}" class="col-md-4 area park text-center">`;
+      domString += `	<h2>${areaArray[i].name}</h2>`;
+      domString += `	<div id="description-${areaArray[i].id}" class="parkDescription">`;
+      domString += `	<p>${areaArray[i].description}</p>`;
+      domString += `	</div>`;
+      domString += `</div>`;
+
   }
   $('#theme-park').append(domString);
 };
