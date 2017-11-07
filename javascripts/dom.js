@@ -8,7 +8,6 @@ const printLeftDiv = (attrArray) => {
   clearLeftDiv();
   let domString = "";
   for (let i = 0; i < attrArray.length; i++) {
-    let attrObject = attrArray[i];
     domString += `<div id="attaction-${i}" >`;
     if (attrArray[i] != attrArray[i].times) {
       domString += `	<a class="attraction">${attrArray[i].name}&nbsp(${attrArray[i].area_id})</a>`;
@@ -19,7 +18,6 @@ const printLeftDiv = (attrArray) => {
     domString += `		<p>${attrArray[i].description}</p>`;
     domString += `	</div>`;
     domString += `</div>`;
-
   }
   $('#div-left-menu').append(domString);
 };
