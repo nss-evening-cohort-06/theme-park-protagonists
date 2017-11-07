@@ -42,38 +42,23 @@ const initialize = () => {
 
 const pressEnter = () => {
   $('body').keypress((e) => {
+    let query = "";
     if (e.key === 'Enter') {
     	e.preventDefault();
       let attrData = data.getAttractionData();
       let searchText = $('#searchBox').val();
-      let query = searchText.toLowerCase();
+      query = searchText.toLowerCase();
 
       let filterArray = attrData.filter(function(el) {
         let lowerCase = el.name.toLowerCase();
         return lowerCase.includes(query);
-
       });
-      data.searchAttractions(query); 
-      console.log("lowercase", filterArray);
+ 
+      data.getAttractionAreas(filterArray); 
+
       }
   });
 };
-
-   
-
-      
-    
-
-      
-      // console.log("attraction data", attractionData);
-      // var results = attractionData.filter((searchText) => {
-      //   searchText.toLowerCase().indexOf(attractionData.toLowerCase()) > -1;
-      //   console.log("results", results);
-
-  //       new Awesomplete('input[attractionData]', {
-  // filter: function(searchText, attractionData) {
-  //   return Awesomplete.FILTER_CONTAINS(searchText, input.match(/[^,]*$/)[0]);
-  // },
 
 
 

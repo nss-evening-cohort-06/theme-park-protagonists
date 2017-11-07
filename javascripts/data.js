@@ -27,6 +27,10 @@ const getAttractionData = () => {
 	return AttrArray;
 };
 
+const getAreaData = () => {
+	return AreasArray;
+};
+
 let getAttraction_TypesJSON = () => {
 	return new Promise(function (resolve, reject) {
 		$.ajax('./db/attraction_types.json').done(function (data) {
@@ -57,12 +61,12 @@ let getAllData = () => {
 		AttrArray.forEach(function (Attraction) {
 			TypesArray.forEach(function (Type) {
 				if (Type.id === Attraction.type_id) {
-					Attraction.type_id = Type.name;
+					Attraction.type_name = Type.name;
 				}
 			});
 			AreasArray.forEach(function (Area) {
 				if (Area.id === Attraction.area_id) {
-					Attraction.area_id = Area.name;
+					Attraction.area_name = Area.name;
 				}
 			});
 		});
@@ -94,21 +98,11 @@ const getAttracts = (parkId) => {
 	dom.printLeftDiv(tempArray);
 };
 
-const searchAttractions = (query) => {	
-
-	AttrArray.forEach((attraction) => {
-		if(query === attraction.name) {
-			var areaName = attraction.area_id;
-			AreasArray.forEach((park) => {
-				if(areaName === park.name) {
-					var parkId = park.id;
-					console.log(attraction.area_id);
-					console.log(park.id);
-					dom.drawBorder(parkId);
-				}
-			});
-		}
-	});
+const getAttractionAreas = (attractionArray) => {	
+ 	dom.clearBorders();
+ 	attractionArray.forEach((attraction) => {
+ 		dom.drawBorder(attraction.area_id);
+     });
 };
 
 
@@ -138,5 +132,5 @@ const showCurrentAttraction = () => {
 };
 
 
-module.exports = { getAllData, getAttracts, getAttractionsJSON, getAttractionsBetween, showCurrentAttraction, searchAttractions, getAttractionData};
+module.exports = { getAllData, getAttracts, getAttractionsJSON, getAttractionsBetween, showCurrentAttraction, getAttractionAreas, getAttractionData, getAreaData};
 

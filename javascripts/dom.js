@@ -47,11 +47,14 @@ const printToMainDiv = (areaArray) => {
 
 const drawBorder = (borderId) => {
 	var areaId = "#area-" + borderId;
-	console.log(areaId);
 	$(`${areaId}`).addClass('border');
 };
 
+const clearBorders = () => {
+  $(`.area`).removeClass('border');
+};
 
-module.exports = { printLeftDiv, printToMainDiv, printLeftDivTimes, drawBorder};
+
+module.exports = { printLeftDiv, printToMainDiv, printLeftDivTimes, drawBorder, clearBorders};
 
 
