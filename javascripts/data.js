@@ -7,7 +7,8 @@ let AttrArray = [];
 let TypesArray = [];
 let AreasArray = [];
 let attractionsWithTimes = [];
-
+let currentAttractons = [];
+let MaintenanceTickets = [];
 
 const setKey = (key) => {
 	firebaseKey = key;
@@ -51,12 +52,22 @@ let getAreasJSON = () => {
 	});
 };
 
+let getMaintenanceTicketsJSON = () => {
+	return new Promise(function (resolve, reject) {
+		$.ajax('./db/maintenance_tickets.json').done(function (data) {
+			resolve(data.maintenance_tickets);
+		}).fail(function (error) {
+			reject(error);
+		});
+	});
+};
+
 let getAllData = () => {
-	Promise.all([getAttractionsJSON(), getAttraction_TypesJSON(), getAreasJSON()]).then(function (results) {
+	Promise.all([getAttractionsJSON(), getAttraction_TypesJSON(), getAreasJSON(), getMaintenanceTicketsJSON()]).then(function (results) {
 		AttrArray = results[0];
 		TypesArray = results[1];
 		AreasArray = results[2];
-
+		MaintenanceTickets = results[3];
 		// Replace type_id and area_id numbers with actual names
 		AttrArray.forEach(function (Attraction) {
 			TypesArray.forEach(function (Type) {
@@ -78,7 +89,8 @@ let getAllData = () => {
 		//dom.printLeftDiv(AttrArray.slice(0,10));
 		// console.log('TypesArray', TypesArray);
 		// console.log('AreasArray',AreasArray);
-		dom.printToMainDiv(AreasArray);  // initially prints park areas to the DOM
+		dom.printToMainDiv(AreasArray);
+		showCurrentAttraction(); // initially prints park areas to the DOM
 	}).catch(function (error) {
 		console.log("error from Promise.all", error);
 	});
@@ -87,14 +99,14 @@ let getAllData = () => {
 const getAttracts = (parkId) => {
 	let tempArray = [];
 	let parkName = AreasArray[parkId - 1].name;
-	console.log(parkName);
-
-
+	// Only pushes attractions that are not out-of-order
 	AttrArray.forEach(function (attr) {
-		if (attr.area_id === parkName)
-			tempArray.push(attr);
+		if (attr.area_id === parkName) {
+			if (!attr.out_of_order || attr.out_of_order === false) {
+				tempArray.push(attr);
+			}
+		}
 	});
-	console.log('getAttracts - parkName', parkName);
 	dom.printLeftDiv(tempArray);
 };
 
@@ -123,14 +135,21 @@ const getAttractionsBetween = (startTime, endTime) => {
 };
 
 
-
-
+//show times are formatted to momentjs object
+//on page load if show times fall between current time end of the hour, print to left div
 const showCurrentAttraction = () => {
-	let currentTime = moment().format('HH:mm a');
-	for (let i = 0; i < attractionsWithTimes; i++) {
+	const currentTime = moment();
+	const endTime = moment().endOf('hour');
+	for (let i = 0; i < attractionsWithTimes.length; i++) {
+		const times = attractionsWithTimes[i].times;
+		for (let j = 0; j < times.length; j++) {
+			const showTimes = moment(times[j], 'HH:mmA');
+			if (showTimes.isBetween(currentTime, endTime)) {
+				currentAttractons.push(attractionsWithTimes[i]);
+			}
+		}
 	}
+	dom.printLeftDiv(currentAttractons);
 };
 
-
 module.exports = { getAllData, getAttracts, getAttractionsJSON, getAttractionsBetween, showCurrentAttraction, getAttractionAreas, getAttractionData, getAreaData};
-

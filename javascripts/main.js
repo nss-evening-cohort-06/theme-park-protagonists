@@ -1,4 +1,5 @@
 'use strict';
+
 const apiKey = require('./apiKey');
 const themePark = require('./themePark');
 const events = require('./events');
@@ -8,10 +9,8 @@ const data = require('./data');
 const currentDate = moment().format("MMM DD, YYYY");
 $('#footer').append(currentDate);
 
-
-
 apiKey.retrieveKeys();
 events.initialize();
 data.getAttractionsJSON();
-data.showCurrentAttraction();
+
 
