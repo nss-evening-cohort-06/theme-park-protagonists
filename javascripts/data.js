@@ -54,7 +54,7 @@ let getMaintenanceTicketsJSON = () => {
 
 let getAllData = () => {
 	Promise.all([getAttractionsJSON(), getAttraction_TypesJSON(), getAreasJSON(), getMaintenanceTicketsJSON()]).then(function (results) {
-		AttrArray = results[0];
+		AttrArray  = results[0];
 		TypesArray = results[1];
 		AreasArray = results[2];
 		MaintenanceTickets = results[3];
@@ -62,12 +62,12 @@ let getAllData = () => {
 		AttrArray.forEach(function (Attraction) {
 			TypesArray.forEach(function (Type) {
 				if (Type.id === Attraction.type_id) {
-					Attraction.type_id = Type.name;
+					Attraction.type_name = Type.name;
 				}
 			});
 			AreasArray.forEach(function (Area) {
 				if (Area.id === Attraction.area_id) {
-					Attraction.area_id = Area.name;
+					Attraction.area_name = Area.name;
 				}
 			});
 		});
@@ -77,6 +77,7 @@ let getAllData = () => {
 			}
 		}
 		//dom.printLeftDiv(AttrArray.slice(0,10));
+		console.log(AttrArray);
 		// console.log('TypesArray', TypesArray);
 		// console.log('AreasArray',AreasArray);
 		dom.printToMainDiv(AreasArray);
@@ -91,7 +92,7 @@ const getAttracts = (parkId) => {
 	let parkName = AreasArray[parkId - 1].name;
 	// Only pushes attractions that are not out-of-order
 	AttrArray.forEach(function (attr) {
-		if (attr.area_id === parkName) {
+		if (attr.area_name === parkName) {
 			if (!attr.out_of_order || attr.out_of_order === false) {
 				tempArray.push(attr);
 			}

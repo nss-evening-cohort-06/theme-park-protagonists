@@ -10,9 +10,9 @@ const printLeftDiv = (attrArray) => {
   for (let i = 0; i < attrArray.length; i++) {
     domString += `<div id="attaction-${i}" >`;
     if (attrArray[i] != attrArray[i].times) {
-      domString += `	<a class="attraction">${attrArray[i].name}&nbsp(${attrArray[i].area_id})</a>`;
+      domString += `	<a class="attraction">${attrArray[i].name}&nbsp(${attrArray[i].area_name})</a>`;
     } else {
-      domString += `	<a class="attraction">${attrArray[i].name}&nbsp(${attrArray[i].type_id})</a>`;
+      domString += `	<a class="attraction">${attrArray[i].name}&nbsp(${attrArray[i].type_name})</a>`;
     }
     domString += `	<div id="description-${i}" class="description">`;
     domString += `		<p>${attrArray[i].description}</p>`;
