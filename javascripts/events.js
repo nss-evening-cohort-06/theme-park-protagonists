@@ -11,8 +11,7 @@ $('.time-item').click(function () {
   const startTime = moment(timeString, 'HH:mm a');
   const endTime = startTime.clone().add(59, 'm');
   const attractionTime = data.getAttractionsBetween(startTime, endTime);
-  dom.printLeftDivTimes(attractionTime);
-  console.log(attractionTime);
+  dom.printLeftDiv(attractionTime);
 });
 
 const showDescriptions = () => {
@@ -25,10 +24,10 @@ const showDescriptions = () => {
 const displayAttractions = () => {
   $('body').on('click', '.area', function (e) {
     let target = e.target.closest('.park');
-    console.log(e.target, target);
+    // console.log(e.target, target);
     let parkId = $(target).attr('id').split('-');
     parkId = parkId[1];
-    console.log('parkId', parkId);
+    // console.log('parkId', parkId);
     data.getAttracts(parkId);
   });
 };
