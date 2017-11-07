@@ -15,8 +15,10 @@ const setKey = (key) => {
 };
 
 let getAttractionsJSON = () => {
+		console.log("inside data", firebaseKey);
+
 	return new Promise(function (resolve, reject) {
-		$.ajax('./db/attractions.json').done(function (data) {
+		$.ajax(`${firebaseKey.databaseURL}/attractions.json`).done(function (data) {
 			resolve(data.attractions);
 		}).fail(function (error) {
 			reject(error);
@@ -152,4 +154,4 @@ const showCurrentAttraction = () => {
 	dom.printLeftDiv(currentAttractons);
 };
 
-module.exports = { getAllData, getAttracts, getAttractionsJSON, getAttractionsBetween, showCurrentAttraction, getAttractionAreas, getAttractionData, getAreaData};
+module.exports = { setKey, getAllData, getAttracts, getAttractionsJSON, getAttractionsBetween, showCurrentAttraction, getAttractionAreas, getAttractionData, getAreaData};

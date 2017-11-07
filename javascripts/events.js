@@ -33,7 +33,6 @@ const displayAttractions = () => {
 };
 
 const initialize = () => {
-	data.getAllData();
 	showDescriptions();
 	displayAttractions();
 	pressEnter();
