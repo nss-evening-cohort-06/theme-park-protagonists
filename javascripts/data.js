@@ -16,8 +16,8 @@ const setKey = (key) => {
 
 let getAttractionsJSON = () => {
 	return new Promise(function (resolve, reject) {
-		$.ajax('./db/attractions.json').done(function (data) {
-			resolve(data.attractions);
+		$.ajax(`${firebaseKey.databaseURL}/attractions.json`).done(function (data) {
+			resolve(data);
 		}).fail(function (error) {
 			reject(error);
 		});
@@ -34,8 +34,8 @@ const getAreaData = () => {
 
 let getAttraction_TypesJSON = () => {
 	return new Promise(function (resolve, reject) {
-		$.ajax('./db/attraction_types.json').done(function (data) {
-			resolve(data.attraction_types);
+		$.ajax(`${firebaseKey.databaseURL}/attraction_types.json`).done(function (data) {
+			resolve(data);
 		}).fail(function (error) {
 			reject(error);
 		});
@@ -44,8 +44,8 @@ let getAttraction_TypesJSON = () => {
 
 let getAreasJSON = () => {
 	return new Promise(function (resolve, reject) {
-		$.ajax('./db/areas.json').done(function (data) {
-			resolve(data.areas);
+		$.ajax(`${firebaseKey.databaseURL}/areas.json`).done(function (data) {
+			resolve(data);
 		}).fail(function (error) {
 			reject(error);
 		});
@@ -54,8 +54,8 @@ let getAreasJSON = () => {
 
 let getMaintenanceTicketsJSON = () => {
 	return new Promise(function (resolve, reject) {
-		$.ajax('./db/maintenance_tickets.json').done(function (data) {
-			resolve(data.maintenance_tickets);
+		$.ajax(`${firebaseKey.databaseURL}/maintenance_tickets.json`).done(function (data) {
+			resolve(data);
 		}).fail(function (error) {
 			reject(error);
 		});
@@ -152,4 +152,4 @@ const showCurrentAttraction = () => {
 	dom.printLeftDiv(currentAttractons);
 };
 
-module.exports = { getAllData, getAttracts, getAttractionsJSON, getAttractionsBetween, showCurrentAttraction, getAttractionAreas, getAttractionData, getAreaData};
+module.exports = { setKey, getAllData, getAttracts, getAttractionsJSON, getAttractionsBetween, showCurrentAttraction, getAttractionAreas, getAttractionData, getAreaData};
