@@ -1,3 +1,5 @@
+@import '_colors';
+
 #div-left-menu {
 	height: 900px;
 	width: 30%;
@@ -17,9 +19,6 @@ div.description {
 	// border: 1px solid black;
 }
 
-.park {
-	border: 1px solid black;
-}
 #footer {
   margin-left: 43%;
   margin-bottom: 10px;
@@ -55,3 +54,6 @@ div.description {
 	height: 300px;
 }
 
+.blank {
+	border: 0px;
+}
