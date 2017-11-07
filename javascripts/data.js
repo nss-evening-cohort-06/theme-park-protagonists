@@ -8,13 +8,14 @@ let attractionsWithTimes = [];
 let currentAttractons = [];
 let MaintenanceTickets = [];
 
-const setKey = (key) => {
-	firebaseKey = key;
-};
+// const setKey = (key) => {
+// 	firebaseKey = key;
+// };
+
 
 let getAttractionsJSON = () => {
 	return new Promise(function (resolve, reject) {
-		$.ajax('./db/attractions.json').done(function (data) {
+		$.ajax(`${firebaseKey.databaseURL}/attractions.json`).done(function (data) {
 			resolve(data.attractions);
 		}).fail(function (error) {
 			reject(error);
@@ -24,7 +25,7 @@ let getAttractionsJSON = () => {
 
 let getAttraction_TypesJSON = () => {
 	return new Promise(function (resolve, reject) {
-		$.ajax('./db/attraction_types.json').done(function (data) {
+		$.ajax(`${firebaseKey.databaseURL}/theme-1a9c2/attraction_types.json`).done(function (data) {
 			resolve(data.attraction_types);
 		}).fail(function (error) {
 			reject(error);
@@ -34,7 +35,7 @@ let getAttraction_TypesJSON = () => {
 
 let getAreasJSON = () => {
 	return new Promise(function (resolve, reject) {
-		$.ajax('./db/areas.json').done(function (data) {
+		$.ajax(`${firebaseKey.databaseURL}/theme-1a9c2/areas.json`).done(function (data) {
 			resolve(data.areas);
 		}).fail(function (error) {
 			reject(error);
@@ -44,7 +45,7 @@ let getAreasJSON = () => {
 
 let getMaintenanceTicketsJSON = () => {
 	return new Promise(function (resolve, reject) {
-		$.ajax('./db/maintenance_tickets.json').done(function (data) {
+		$.ajax(`${firebaseKey.databaseURL}/theme-1a9c2/maintenance_tickets.json`).done(function (data) {
 			resolve(data.maintenance_tickets);
 		}).fail(function (error) {
 			reject(error);
