@@ -1,7 +1,7 @@
 "use strict";
 
 const themePark = require('./themePark');
-const firebaseApi = require('./firebaseApi');
+const data = require('./data');
 
 const apiKeys = () => {
 	return new Promise((resolve, reject) => {
@@ -16,8 +16,14 @@ const apiKeys = () => {
 const retrieveKeys = () => {
 	apiKeys().then((results) => {
 		themePark.setKey(results.apiKey);
-		firebaseApi.setKey(results);
+		data.setKey(results);
 		firebase.initializeApp(results.firebaseKeys);
+<<<<<<< HEAD
+=======
+		data.getAttractionsJSON();
+		data.getAllData();
+
+>>>>>>> master
 	}).catch((error) => {
 		console.log('error in retrieve keys', error);
 	});

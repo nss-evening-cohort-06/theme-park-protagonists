@@ -1,5 +1,7 @@
 "use strict";
 const dom = require('./dom');
+// const events = require('./events');
+
 let firebaseKey = "";
 let AttrArray = [];
 let TypesArray = [];
@@ -16,17 +18,34 @@ let MaintenanceTickets = [];
 let getAttractionsJSON = () => {
 	return new Promise(function (resolve, reject) {
 		$.ajax(`${firebaseKey.databaseURL}/attractions.json`).done(function (data) {
+<<<<<<< HEAD
 			resolve(data.attractions);
+=======
+			resolve(data);
+>>>>>>> master
 		}).fail(function (error) {
 			reject(error);
 		});
 	});
 };
 
+const getAttractionData = () => {
+	return AttrArray;
+};
+
+const getAreaData = () => {
+	return AreasArray;
+};
+
 let getAttraction_TypesJSON = () => {
 	return new Promise(function (resolve, reject) {
+<<<<<<< HEAD
 		$.ajax(`${firebaseKey.databaseURL}/theme-1a9c2/attraction_types.json`).done(function (data) {
 			resolve(data.attraction_types);
+=======
+		$.ajax(`${firebaseKey.databaseURL}/attraction_types.json`).done(function (data) {
+			resolve(data);
+>>>>>>> master
 		}).fail(function (error) {
 			reject(error);
 		});
@@ -35,8 +54,13 @@ let getAttraction_TypesJSON = () => {
 
 let getAreasJSON = () => {
 	return new Promise(function (resolve, reject) {
+<<<<<<< HEAD
 		$.ajax(`${firebaseKey.databaseURL}/theme-1a9c2/areas.json`).done(function (data) {
 			resolve(data.areas);
+=======
+		$.ajax(`${firebaseKey.databaseURL}/areas.json`).done(function (data) {
+			resolve(data);
+>>>>>>> master
 		}).fail(function (error) {
 			reject(error);
 		});
@@ -45,8 +69,13 @@ let getAreasJSON = () => {
 
 let getMaintenanceTicketsJSON = () => {
 	return new Promise(function (resolve, reject) {
+<<<<<<< HEAD
 		$.ajax(`${firebaseKey.databaseURL}/theme-1a9c2/maintenance_tickets.json`).done(function (data) {
 			resolve(data.maintenance_tickets);
+=======
+		$.ajax(`${firebaseKey.databaseURL}/maintenance_tickets.json`).done(function (data) {
+			resolve(data);
+>>>>>>> master
 		}).fail(function (error) {
 			reject(error);
 		});
@@ -102,6 +131,15 @@ const getAttracts = (parkId) => {
 	dom.printLeftDiv(tempArray);
 };
 
+const getAttractionAreas = (attractionArray) => {	
+ 	dom.clearBorders();
+ 	attractionArray.forEach((attraction) => {
+ 		dom.drawBorder(attraction.area_id);
+     });
+};
+
+
+
 //takes in start/end time from click event
 //filters through the attractions with times
 //formats attraction time to moment object, if time falls between start and end (moment method), return
@@ -116,6 +154,7 @@ const getAttractionsBetween = (startTime, endTime) => {
 		}
 	});
 };
+
 
 //show times are formatted to momentjs object
 //on page load if show times fall between current time end of the hour, print to left div
@@ -134,4 +173,4 @@ const showCurrentAttraction = () => {
 	dom.printLeftDiv(currentAttractons);
 };
 
-module.exports = { getAllData, getAttracts, getAttractionsJSON, getAttractionsBetween, showCurrentAttraction };
+module.exports = { setKey, getAllData, getAttracts, getAttractionsJSON, getAttractionsBetween, showCurrentAttraction, getAttractionAreas, getAttractionData, getAreaData};

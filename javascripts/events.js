@@ -33,10 +33,34 @@ const displayAttractions = () => {
 };
 
 const initialize = () => {
-  data.getAllData();
-  showDescriptions();
-  displayAttractions();
+	showDescriptions();
+	displayAttractions();
+	pressEnter();
 };
+
+const pressEnter = () => {
+  $('body').keypress((e) => {
+    let query = "";
+    if (e.key === 'Enter') {
+    	e.preventDefault();
+      let attrData = data.getAttractionData();
+      let searchText = $('#searchBox').val();
+      query = searchText.toLowerCase();
+
+      let filterArray = attrData.filter(function(el) {
+        let lowerCase = el.name.toLowerCase();
+        return lowerCase.includes(query);
+      });
+ 
+      data.getAttractionAreas(filterArray); 
+
+      }
+  });
+};
+
+
+
+
 
 module.exports = { initialize };
 
