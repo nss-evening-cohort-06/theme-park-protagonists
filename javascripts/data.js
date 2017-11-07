@@ -5,8 +5,8 @@ let AttrArray = [];
 let TypesArray = [];
 let AreasArray = [];
 let attractionsWithTimes = [];
+let currentAttractons = [];
 let MaintenanceTickets = [];
-
 
 const setKey = (key) => {
 	firebaseKey = key;
@@ -79,7 +79,8 @@ let getAllData = () => {
 		//dom.printLeftDiv(AttrArray.slice(0,10));
 		// console.log('TypesArray', TypesArray);
 		// console.log('AreasArray',AreasArray);
-		dom.printToMainDiv(AreasArray);  // initially prints park areas to the DOM
+		dom.printToMainDiv(AreasArray);
+		showCurrentAttraction(); // initially prints park areas to the DOM
 	}).catch(function (error) {
 		console.log("error from Promise.all", error);
 	});
@@ -114,17 +115,21 @@ const getAttractionsBetween = (startTime, endTime) => {
 	});
 };
 
+//show times are formatted to momentjs object
+//on page load if show times fall between current time end of the hour, print to left div
 const showCurrentAttraction = () => {
-	let time = moment().format('HH:mm a');
-	let currentTime = moment(time, 'HH:mm a');
-	let currentEndTime = currentTime.clone().add(59, 'm').format('H:mm a');
-	console.log(currentEndTime);
-	for (let i = 0; i < attractionsWithTimes; i++) {
-
-		// if (attractionsWithTimes[i].isBetween(currentTime, currentEndTime)) {
-		// 	console.log(attractionsWithTimes[i]);
-		// }
+	const currentTime = moment();
+	const endTime = moment().endOf('hour');
+	for (let i = 0; i < attractionsWithTimes.length; i++) {
+		const times = attractionsWithTimes[i].times;
+		for (let j = 0; j < times.length; j++) {
+			const showTimes = moment(times[j], 'HH:mmA');
+			if (showTimes.isBetween(currentTime, endTime)) {
+				currentAttractons.push(attractionsWithTimes[i]);
+			}
+		}
 	}
+	dom.printLeftDiv(currentAttractons);
 };
 
 module.exports = { getAllData, getAttracts, getAttractionsJSON, getAttractionsBetween, showCurrentAttraction };
