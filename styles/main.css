@@ -69,6 +69,22 @@ body {
 .parkDescription {
   font-style: italic; }
 
+
+#theme-park {
+  width: 70%; }
+
+#footer {
+  margin-left: 43%;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  bottom: 0;
+  left: 0; }
+
+#searchBox {
+  width: 600px;
+  margin-left: 125px;
+  border-radius: 14px; }
+
 .show-time-dropdown {
   margin-left: 40%;
   margin-bottom: 25px;
