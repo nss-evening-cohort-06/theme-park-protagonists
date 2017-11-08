@@ -1,34 +1,36 @@
-#area-1 {
-  background-color: #730217; }
+body {
+  cursor: pointer; }
 
-#area-2 {
-  background-color: #D15530; }
+.upside-down {
+  background-image: url("https://i.cdn-sc.com/MediaVaultImages/58_thumbnail.jpg");
+  background-repeat: no-repeat;
+  background-size: cover; }
 
-#area-3 {
-  background-color: #A37849; }
-
-#area-4 {
-  background-color: #2594D9; }
-
-#area-5 {
-  background-color: #E73C81; }
-
-#area-6 {
-  background-color: #3E4D8C; }
-
-#area-7 {
-  background-color: #F2CF53; }
+.magic-kingdom-header {
+  background-image: url("http://2.bp.blogspot.com/-cgxYzH6QVcs/UOzl6XS3zdI/AAAAAAAAGRs/dHV2Bx0Zll4/s1600/iw1GIH64518fA.png");
+  width: 100%;
+  height: 200px;
+  margin-left: 18%;
+  margin-bottom: 10px;
+  background-repeat: no-repeat; }
 
 #div-left-menu {
   height: 900px;
   width: 30%;
   border: 1px solid black;
   padding: 3px;
-  word-wrap: break-word; }
+  word-wrap: break-word;
+  border-radius: 15px;
+  box-shadow: 2px 2px black; }
 
 div.description {
   border: 1px solid black;
-  display: none; }
+  display: none;
+  background-color: gainsboro;
+  box-shadow: 2px 2px black;
+  padding: 10px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px; }
 
 div.parkDescription {
   font-style: italic; }
@@ -46,12 +48,13 @@ div.parkDescription {
 
 #searchBox {
   width: 600px;
-  margin-left: 200px;
+  margin-left: 125px;
   border-radius: 14px; }
 
 .show-time-dropdown {
   margin-left: 40%;
-  margin-bottom: 25px; }
+  margin-bottom: 25px;
+  font-family: "Spirax", cursive; }
 
 #show-times {
   width: 300px; }
@@ -62,12 +65,45 @@ div.parkDescription {
   font-size: 20px; }
 
 .area {
-  border: solid black 2px;
+  color: white;
+  border-radius: 15px;
   height: 300px;
   overflow: scroll; }
 
 .border {
   border: solid orange 5px; }
 
+.navbar-brand {
+  margin: 0;
+  padding: 0; }
+  .navbar-brand img {
+    margin-left: 5px;
+    height: 50px;
+    width: 275px; }
+
 .blank {
   border: 0px; }
+
+#main-div {
+  padding: 15px;
+  margin-bottom: 15px; }
+  #main-div h2 {
+    font-family: "Spirax", cursive; }
+  #main-div #area-1 {
+    background-color: #730217; }
+  #main-div #area-2 {
+    background-color: #D15530; }
+  #main-div #area-3 {
+    background-color: #A37849; }
+  #main-div #area-4 {
+    background-color: #2594D9; }
+  #main-div #area-5 {
+    background-color: #E73C81; }
+  #main-div #area-6 {
+    background-color: #3E4D8C; }
+  #main-div #area-7 {
+    background-color: #F2CF53; }
+
+.attraction-item {
+  font-family: "Quattrocento", serif;
+  margin: 10px; }
