@@ -51,10 +51,12 @@ const goUpsideDown = (upsideDownArray) => {
   let areaId = "#area-" + upsideDownArray.area_id;
   console.log(areaId);
   $(`${areaId}`).addClass('upside-down');
+  $(`${areaId}`).addClass('flipdiv');
 };
 
 const clearUpsideDown = () => {
   $(`.area`).removeClass('upside-down');
+  $(`.area`).removeClass('flipdiv');
 };
 
 const clearBorders = () => {

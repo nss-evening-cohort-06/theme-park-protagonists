@@ -4,44 +4,97 @@ body {
 	cursor: pointer;
 }
 
-.upside-down {
-	background-image: url('https://i.cdn-sc.com/MediaVaultImages/58_thumbnail.jpg');
-	background-repeat: no-repeat;
-	background-size: cover;
+.navbar-brand {
+	margin: 0;
+	padding: 0;
+
+		img {
+			margin-left: 5px;
+			height: 50px;
+			width: 275px;
+	}
+}
+
+#searchBox {
+	width: 600px;
+	margin-left: 125px;
+	border-radius: 14px;
 }
 
 .magic-kingdom-header {
-	background-image: url('http://2.bp.blogspot.com/-cgxYzH6QVcs/UOzl6XS3zdI/AAAAAAAAGRs/dHV2Bx0Zll4/s1600/iw1GIH64518fA.png');
-	width: 100%;
-	height: 200px;
+	width: 65%;
+	height: 215px;
 	margin-left: 18%;
 	margin-bottom: 10px;
 	background-repeat: no-repeat;
 }
 
-#div-left-menu {
-	height: 900px;
-	width: 30%;
-	border: 1px solid black;
-	padding: 3px;
-	word-wrap: break-word;
-	border-radius: 15px;
-  box-shadow: $box-shadow;
+#main-div {
+    padding: 15px;
+    margin-bottom: 15px;
+
+		.area {
+			color: white;
+  		border-radius: 15px;
+			height: 300px;
+			overflow: scroll;
+		}
+
+		h2 {
+			font-family: $header-font;
+		}
+		#area-1 { 
+    	background-color: $area1; 
+		}
+		#area-2 { 
+    	background-color: $area2; 
+	} 
+		#area-3 { 
+    	background-color: $area3; 
+	} 
+		#area-4 { 
+    	background-color: $area4; 
+	} 
+		#area-5{ 
+    	background-color: $area5; 
+	} 
+		#area-6{ 
+    	background-color: $area6; 
+	} 
+		#area-7 { 
+    	background-color: $area7; 
+	} 
+		#theme-park {
+			width: 70%;
+	}
+		#div-left-menu {
+			height: 900px;
+			width: 30%;
+			border: 1px solid black;
+			padding: 3px;
+			word-wrap: break-word;
+			border-radius: 15px;
+  		box-shadow: $box-shadow;
+
+				.attraction-item {
+					font-family: $alt-font;
+					margin: 10px;
+			}
+	}
 }
 
-div.description {
+.description {
 	border: 1px solid black;
 	display: none;
 	background-color: gainsboro;
   box-shadow: $box-shadow;
   padding: 10px;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
 }
 
-div.parkDescription {
+.parkDescription {
 	font-style: italic;
 }
+
 
 #theme-park {
 	width: 70%;
@@ -78,64 +131,33 @@ div.parkDescription {
   font-size: 20px;
 }
 
-.area {
-	color: white;
-  border-radius: 15px;
-	height: 300px;
-	overflow: scroll;
-}
-
 .border {
 	border: solid orange 5px;
-}
-
-.navbar-brand {
-	margin: 0;
-	padding: 0;
-
-		img {
-			margin-left: 5px;
-			height: 50px;
-			width: 275px;
-	}
 }
 
 .blank {
 	border: 0px;
 }
 
-#main-div {
-    padding: 15px;
-    margin-bottom: 15px;
-
-		h2 {
-			font-family: $header-font;
-		}
-		#area-1 { 
-    background-color: $area1; 
-		}
-		#area-2 { 
-    background-color: $area2; 
-	} 
-		#area-3 { 
-    background-color: $area3; 
-	} 
-		#area-4 { 
-    background-color: $area4; 
-	} 
-		#area-5{ 
-    background-color: $area5; 
-	} 
-		#area-6{ 
-    background-color: $area6; 
-	} 
-		#area-7 { 
-    background-color: $area7; 
-	} 
+.upside-down {
+	background-image: url('https://i.cdn-sc.com/MediaVaultImages/58_thumbnail.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
-.attraction-item {
-	font-family: $alt-font;
-	margin: 10px;
+#footer {
+  margin-left: 43%;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
 }
 
+.flipdiv {
+	-moz-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
