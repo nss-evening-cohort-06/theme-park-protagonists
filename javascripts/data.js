@@ -1,7 +1,5 @@
 "use strict";
 const dom = require('./dom');
-// const events = require('./events');
-
 let firebaseKey = "";
 let AttrArray = [];
 let TypesArray = [];
@@ -9,12 +7,13 @@ let AreasArray = [];
 let attractionsWithTimes = [];
 let currentAttractons = [];
 let MaintenanceTickets = [];
+let upsideDown = ["away", "beneath", "blinking", "broken", "camera", "christmasclaws", "cruiser", "darkness", "enchanted", "evil", "film", "forgotten", "friend", "gasoline", "ghost", "gloomy", "hawkins", "hidden", "hungry", "indiana", "invisible", "labyrinth", "lights", "merlin", "mike", "monsters", "neon", "nighttime", "party", "portal", "pulsate", "school", " sheriff", "spellbinding", "supernatural", "thunder", "underground", "vintage", "waffle"];
 
 const setKey = (key) => {
 	firebaseKey = key;
 };
 
-let getAttractionsJSON = () => {
+const getAttractionsJSON = () => {
 	return new Promise(function (resolve, reject) {
 		$.ajax(`${firebaseKey.databaseURL}/attractions.json`).done(function (data) {
 			resolve(data);
@@ -32,7 +31,7 @@ const getAreaData = () => {
 	return AreasArray;
 };
 
-let getAttraction_TypesJSON = () => {
+const getAttraction_TypesJSON = () => {
 	return new Promise(function (resolve, reject) {
 		$.ajax(`${firebaseKey.databaseURL}/attraction_types.json`).done(function (data) {
 			resolve(data);
@@ -42,7 +41,7 @@ let getAttraction_TypesJSON = () => {
 	});
 };
 
-let getAreasJSON = () => {
+const getAreasJSON = () => {
 	return new Promise(function (resolve, reject) {
 		$.ajax(`${firebaseKey.databaseURL}/areas.json`).done(function (data) {
 			resolve(data);
@@ -52,7 +51,7 @@ let getAreasJSON = () => {
 	});
 };
 
-let getMaintenanceTicketsJSON = () => {
+const getMaintenanceTicketsJSON = () => {
 	return new Promise(function (resolve, reject) {
 		$.ajax(`${firebaseKey.databaseURL}/maintenance_tickets.json`).done(function (data) {
 			resolve(data);
@@ -62,7 +61,7 @@ let getMaintenanceTicketsJSON = () => {
 	});
 };
 
-let getAllData = () => {
+const getAllData = () => {
 	Promise.all([getAttractionsJSON(), getAttraction_TypesJSON(), getAreasJSON(), getMaintenanceTicketsJSON()]).then(function (results) {
 		AttrArray = results[0];
 		TypesArray = results[1];
@@ -86,11 +85,8 @@ let getAllData = () => {
 				attractionsWithTimes.push(AttrArray[i]);
 			}
 		}
-		//dom.printLeftDiv(AttrArray.slice(0,10));
-		// console.log('TypesArray', TypesArray);
-		// console.log('AreasArray',AreasArray);
+		showCurrentAttraction();
 		dom.printToMainDiv(AreasArray);
-		showCurrentAttraction(); // initially prints park areas to the DOM
 	}).catch(function (error) {
 		console.log("error from Promise.all", error);
 	});
@@ -110,14 +106,12 @@ const getAttracts = (parkId) => {
 	dom.printLeftDiv(tempArray);
 };
 
-const getAttractionAreas = (attractionArray) => {	
- 	dom.clearBorders();
- 	attractionArray.forEach((attraction) => {
- 		dom.drawBorder(attraction.area_id);
-     });
+const getAttractionAreas = (attractionArray) => {
+	dom.clearBorders();
+	attractionArray.forEach((attraction) => {
+		dom.drawBorder(attraction.area_id);
+	});
 };
-
-
 
 //takes in start/end time from click event
 //filters through the attractions with times
@@ -127,13 +121,12 @@ const getAttractionsBetween = (startTime, endTime) => {
 		for (let i = 0; i < attraction.times.length; i++) {
 			const timeString = attraction.times[i];
 			const time = moment(timeString, 'HH:mm a');
-			if (time.isBetween(startTime, endTime)) {
+			if (time.isBetween(startTime, endTime, null, '[]')) {
 				return true;
 			}
 		}
 	});
 };
-
 
 //show times are formatted to momentjs object
 //on page load if show times fall between current time end of the hour, print to left div
@@ -152,4 +145,5 @@ const showCurrentAttraction = () => {
 	dom.printLeftDiv(currentAttractons);
 };
 
-module.exports = { setKey, getAllData, getAttracts, getAttractionsJSON, getAttractionsBetween, showCurrentAttraction, getAttractionAreas, getAttractionData, getAreaData};
+module.exports = { setKey, getAllData, getAttracts, getAttractionsJSON, getAttractionsBetween, showCurrentAttraction, getAttractionAreas, getAttractionData, getAreaData, upsideDown };
+
