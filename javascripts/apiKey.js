@@ -19,7 +19,6 @@ const retrieveKeys = () => {
 		firebase.initializeApp(results.firebaseKeys);
 		data.getAttractionsJSON();
 		data.getAllData();
-
 	}).catch((error) => {
 		console.log('error in retrieve keys', error);
 	});
