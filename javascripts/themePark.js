@@ -1,4 +1,5 @@
 "use strict";
+
 let themeParkKey;
 let firebaseKey = "";
 let attractionNames = [];

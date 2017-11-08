@@ -101,7 +101,7 @@ const getAttracts = (parkId) => {
 	let parkName = AreasArray[parkId - 1].name;
 	// Only pushes attractions that are not out-of-order
 	AttrArray.forEach(function (attr) {
-		if (attr.area_id === parkName) {
+		if (attr.area_name === parkName) {
 			if (!attr.out_of_order || attr.out_of_order === false) {
 				tempArray.push(attr);
 			}
