@@ -54,7 +54,8 @@ body {
     padding: 3px;
     word-wrap: break-word;
     border-radius: 15px;
-    box-shadow: 2px 2px black; }
+    box-shadow: 2px 2px black;
+    overflow: scroll; }
     #main-div #div-left-menu .attraction-item {
       font-family: "Quattrocento", serif;
       margin: 10px; }
@@ -69,7 +70,6 @@ body {
 .parkDescription {
   font-style: italic; }
 
-
 #theme-park {
   width: 70%; }
 
@@ -79,11 +79,6 @@ body {
   margin-top: 10px;
   bottom: 0;
   left: 0; }
-
-#searchBox {
-  width: 600px;
-  margin-left: 125px;
-  border-radius: 14px; }
 
 .show-time-dropdown {
   margin-left: 40%;
@@ -108,14 +103,6 @@ body {
   background-image: url("https://i.cdn-sc.com/MediaVaultImages/58_thumbnail.jpg");
   background-repeat: no-repeat;
   background-size: cover; }
-
-#footer {
-  margin-left: 43%;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  position: fixed;
-  bottom: 0;
-  left: 0; }
 
 .flipdiv {
   -moz-transform: rotate(180deg);

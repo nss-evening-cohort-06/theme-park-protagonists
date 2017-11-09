@@ -48,7 +48,6 @@ const pressEnter = () => {
         for (let j = 0; j < data.upsideDown.length; j++) {
           if (filterArray[i].description.includes(data.upsideDown[j])) {
             dom.goUpsideDown(filterArray[i]);
-            console.log(filterArray[i]);
           }
         }
       }
