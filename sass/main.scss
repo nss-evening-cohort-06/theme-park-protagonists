@@ -75,6 +75,7 @@ body {
 			word-wrap: break-word;
 			border-radius: 15px;
   		box-shadow: $box-shadow;
+			overflow: scroll;
 
 				.attraction-item {
 					font-family: $alt-font;
@@ -95,10 +96,8 @@ body {
 	font-style: italic;
 }
 
-
 #theme-park {
 	width: 70%;
-	// border: 1px solid black;
 }
 
 #footer {
@@ -107,12 +106,6 @@ body {
   margin-top: 10px;
   bottom: 0;
   left: 0;
-}
-
-#searchBox {
-	width: 600px;
-	margin-left: 125px;
-	border-radius: 14px;
 }
 
 .show-time-dropdown {
@@ -143,15 +136,6 @@ body {
 	background-image: url('https://i.cdn-sc.com/MediaVaultImages/58_thumbnail.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
-}
-
-#footer {
-  margin-left: 43%;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  position: fixed;
-  bottom: 0;
-  left: 0;
 }
 
 .flipdiv {

@@ -49,7 +49,6 @@ const drawBorder = (borderId) => {
 const goUpsideDown = (upsideDownArray) => {
   clearUpsideDown();
   let areaId = "#area-" + upsideDownArray.area_id;
-  console.log(areaId);
   $(`${areaId}`).addClass('upside-down');
   $(`${areaId}`).addClass('flipdiv');
 };
