@@ -6,21 +6,21 @@ const clearLeftDiv = () => {
   $('#div-left-menu').empty('');
 };
 
-const printLeftDiv = (attrArray) => {
+const printLeftDiv = (attrArray) => { console.log('in printLeftDiv',attrArray.length);
   clearLeftDiv();
   let domString = "";
   for (let i = 0; i < attrArray.length; i++) {
-    domString += `<div id="attaction-${i}" >`;
-    if (attrArray[i] != attrArray[i].times) {
-      domString += `	<a class="attraction">${attrArray[i].name}&nbsp(${attrArray[i].area_name})</a>`;
-    } else {
-      domString += `	<a class="attraction">${attrArray[i].name}&nbsp(${attrArray[i].type_name})</a>`;
+      domString += `<div id="attaction-${i}" >`;
+      if (attrArray[i] != attrArray[i].times) {
+        domString += `	<a class="attraction">${attrArray[i].name}&nbsp(${attrArray[i].type_name})</a>`;
+      } else {
+        domString += `	<a class="attraction">${attrArray[i].name}&nbsp(${attrArray[i].area_name})</a>`;
+      }
+      domString += `	<div id="description-${i}" class="description">`;
+      domString += `		<p>${attrArray[i].description}</p>`;
+      domString += `	</div>`;
+      domString += `</div>`;
     }
-    domString += `	<div id="description-${i}" class="description">`;
-    domString += `		<p>${attrArray[i].description}</p>`;
-    domString += `	</div>`;
-    domString += `</div>`;
-  }
   $('#div-left-menu').append(domString);
 };
 
