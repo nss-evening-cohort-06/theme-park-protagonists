@@ -1,7 +1,5 @@
 "use strict";
 
-
-
 const clearLeftDiv = () => {
   $('#div-left-menu').empty('');
 };
@@ -41,7 +39,6 @@ const printToMainDiv = (areaArray) => {
   }
   $('#theme-park').append(domString);
 };
-
 
 const drawBorder = (borderId) => {
 	var areaId = "#area-" + borderId;

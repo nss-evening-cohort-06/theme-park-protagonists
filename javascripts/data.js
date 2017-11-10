@@ -1,6 +1,9 @@
 "use strict";
 const dom = require('./dom');
-// const events = require('./events');
+
+//////////////////////
+// global variables //
+//////////////////////
 
 let firebaseKey = "";
 let AttrArray = [];
@@ -10,6 +13,10 @@ let attractionsWithTimes = [];
 let currentAttractons = [];
 let MaintenanceTickets = [];
 let OutOfOrdersArray = [];
+
+//////////////////////
+////// functions /////
+//////////////////////
 
 const setKey = (key) => {
 	firebaseKey = key;
@@ -63,53 +70,6 @@ let getMaintenanceTicketsJSON = () => {
 	});
 };
 
-
-const maintenanceCheck = (attrObject) => {
-	MaintenanceTickets.forEach(function(maintenanceTicket) {
-		let currentDate = Date().split(" ").slice(0,3);
-		if (attrObject.id === maintenanceTicket.attraction_id) {
-			let ticketDate = maintenanceTicket.maintenance_date.split(" ").slice(0,3);
-			if (JSON.stringify(currentDate) === JSON.stringify(ticketDate)) { 
-				let currentTime = Date().split(" ").slice(4)[0];
-				let ticketStart = maintenanceTicket.maintenance_date.split(" ").slice(4)[0].split(":");
-				let ticketEnd	= maintenanceTicket.maintenance_date.split(" ").slice(4)[0].split(":");
-				ticketEnd[0]	= (parseInt(ticketStart[0]) + parseInt(maintenanceTicket.maintenance_duration_hours)).toString();
-				ticketStart = ticketStart.join(":");
-				ticketEnd = ticketEnd.join(":");
-				currentTime = moment(currentTime, 'HH:mm:ss');
-				ticketStart = moment(ticketStart, 'HH:mm:ss');
-				ticketEnd = moment(ticketEnd, 'HH:mm:ss');
-				if (currentTime.isBetween(ticketStart,ticketEnd)) {
-					attrObject.maintenance = true;
-				}
-			}
-		}
-	});
-};
-
-const outOfOrderCheck = (attrObject) => {
-	OutOfOrdersArray.forEach(function(maintenanceTicket) { console.log("in outOfOrderCheck 1");
-		let currentDate = Date().split(" ").slice(0,3);
-		if (attrObject.id === maintenanceTicket.attraction_id) { console.log("in outOfOrderCheck 2", attrObject.id);
-			let ticketDate = maintenanceTicket.maintenance_date.split(" ").slice(0,3);
-			if (JSON.stringify(currentDate) === JSON.stringify(ticketDate)) { console.log("in outOfOrderCheck 3");
-				let currentTime = Date().split(" ").slice(4)[0];
-				let ticketStart = maintenanceTicket.maintenance_date.split(" ").slice(4)[0].split(":");
-				let ticketEnd	= maintenanceTicket.maintenance_date.split(" ").slice(4)[0].split(":");
-				ticketEnd[0]	= (parseInt(ticketStart[0]) + parseInt(maintenanceTicket.maintenance_duration_hours)).toString();
-				ticketStart = ticketStart.join(":");
-				ticketEnd = ticketEnd.join(":");
-				currentTime = moment(currentTime, 'HH:mm:ss');
-				ticketStart = moment(ticketStart, 'HH:mm:ss');
-				ticketEnd = moment(ticketEnd, 'HH:mm:ss');
-				if (currentTime.isAfter(ticketEnd)) { 
-					attrObject.out_of_order = "blah";
-				}
-			}
-		}
-	});
-};
-
 let getAllData = () => {
 	Promise.all([getAttractionsJSON(), getAttraction_TypesJSON(), getAreasJSON(), getMaintenanceTicketsJSON()]).then(function (results) {
 		AttrArray = results[0];
@@ -143,39 +103,16 @@ let getAllData = () => {
 				attractionsWithTimes.push(AttrArray[i]);
 			}
 		}
-		//dom.printLeftDiv(AttrArray.slice(0,10));
-		// console.log('TypesArray', TypesArray);
-		// console.log('AreasArray',AreasArray);
 
 		getOutOfOrders(MaintenanceTickets);
-		dom.printToMainDiv(AreasArray);
-		showCurrentAttraction(); // initially prints park areas to the DOM
-	}).catch(function (error) {
+		dom.printToMainDiv(AreasArray);  // prints park areas to the DOM
+		showCurrentAttraction(); // initially prints current attractions to left div on the DOM
+		}).catch(function (error) {
 		console.log("error from Promise.all", error);
 	});
 };
 
-const isRideOpen = (attr) => {
-	maintenanceCheck(attr);
-	outOfOrderCheck(attr);
-	if ( (attr.out_of_order !== "blah" && attr.maintenance === false) || ( !attr.out_of_order  && attr.maintenance === false ) ) {
-		console.log(attr);
-		return(attr);
-	}
-};
-
-// const setOutOfOrders = (outOfOrderArray) => {
-// 	outOfOrderArray.forEach(function(item) {
-// 		AttrArray.forEach(function(attr) {
-// 			let id = item.attraction_id;
-// 			if (id === attr.id) {
-
-// 			}
-// 		});
-// 	});
-// };
-
-function getOutOfOrders(mainTicket) { 
+const getOutOfOrders = (mainTicket) => { 
 	let tempArray = [];
 	let idNow = 0;
 	for(let i = 0; i < mainTicket.length; i++) {
@@ -196,8 +133,45 @@ function getOutOfOrders(mainTicket) {
 	  	}
 	}
 	OutOfOrdersArray = tempArray;
-	console.log("out of orders",OutOfOrdersArray);
-}
+	// console.log("out of orders",OutOfOrdersArray);
+};
+
+const isRideOpen = (attr) => {
+	maintenanceCheck(attr);
+	outOfOrderCheck(attr);
+	if ( ( !attr.out_of_order  && attr.maintenance === false ) ) {
+		// console.log(attr);
+		return(attr);
+	}
+};
+
+const maintenanceCheck = (attrObject) => {
+	MaintenanceTickets.forEach(function(maintenanceTicket) {
+		let currentDate = moment();
+		if (attrObject.id === maintenanceTicket.attraction_id) {
+			let ticketDate = moment(maintenanceTicket.maintenance_date);
+			let ticketDateEnd = moment(ticketDate).add(maintenanceTicket.maintenance_duration_hours, 'hours');
+			if (currentDate.isBetween(ticketDate,ticketDateEnd)) {
+				attrObject.maintenance = true;
+			}
+		}
+	});
+};
+
+const outOfOrderCheck = (attrObject) => {
+	if(attrObject.out_of_order) {
+		OutOfOrdersArray.forEach(function(maintenanceTicket) {
+			let currentDate = moment();
+			if (attrObject.id === maintenanceTicket.attraction_id) {
+				let ticketDate = moment(maintenanceTicket.maintenance_date);
+				let ticketDateEnd = moment(ticketDate).add(maintenanceTicket.maintenance_duration_hours, 'hours');
+				if (currentDate > ticketDateEnd) {
+					attrObject.out_of_order = false;
+				}
+			}
+		});
+	}
+};
 
 const getAttracts = (parkId) => {
 	let tempArray = [];
