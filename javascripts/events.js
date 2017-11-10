@@ -11,8 +11,9 @@ $('.time-item').click(function () {
   const timeString = $(this).attr('id');
   const startTime = moment(timeString, 'HH:mm a');
   const endTime = startTime.clone().add(59, 'm');
-  const attractionTime = data.getAttractionsBetween(startTime, endTime);
-  dom.printLeftDiv(attractionTime);
+  const attractionTime = data.getAttractionsBetween(startTime, endTime, null, '[]');
+  let time =1;
+  dom.printLeftDiv(attractionTime, time);
 });
 
 const showDescriptions = () => {
@@ -25,37 +26,43 @@ const showDescriptions = () => {
 const displayAttractions = () => {
   $('body').on('click', '.area', function (e) {
     let target = e.target.closest('.park');
-    // console.log(e.target, target);
     let parkId = $(target).attr('id').split('-');
     parkId = parkId[1];
-    // console.log('parkId', parkId);
     data.getAttracts(parkId);
   });
 };
 
-const initialize = () => {
-	showDescriptions();
-	displayAttractions();
-	pressEnter();
-};
-
 const pressEnter = () => {
   $('body').keypress((e) => {
+    dom.clearUpsideDown();
     let query = "";
     if (e.key === 'Enter') {
-    	e.preventDefault();
+      e.preventDefault();
       let attrData = data.getAttractionData();
       let searchText = $('#searchBox').val();
       query = searchText.toLowerCase();
 
-      let filterArray = attrData.filter(function(el) {
+      let filterArray = attrData.filter(function (el) {
         let lowerCase = el.name.toLowerCase();
         return lowerCase.includes(query);
       });
-      data.getAttractionAreas(filterArray); 
-
+      for (let i = 0; i < filterArray.length; i++) {
+        for (let j = 0; j < data.upsideDown.length; j++) {
+          if (filterArray[i].description.includes(data.upsideDown[j])) {
+            dom.goUpsideDown(filterArray[i]);
+          }
+        }
       }
+      data.getAttractionAreas(filterArray);
+    }
   });
+};
+
+const initialize = () => {
+  showDescriptions();
+  displayAttractions();
+  pressEnter();
+  data.getAttractionsJSON();
 };
 
 module.exports = { initialize };

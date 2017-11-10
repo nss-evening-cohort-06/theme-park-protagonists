@@ -3,8 +3,8 @@
 <head>
   <title>Magic Kingdom</title>
   <link rel="stylesheet" type="text/css" href="./lib/node_modules/bootstrap/dist/css/bootstrap.min.css">
-<!--   <link rel="stylesheet" href="./scss/awesomeComplete.css">
- -->  <link href="./styles/main.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Quattrocento|Spirax" rel="stylesheet">
+  <link href="./styles/main.css" rel="stylesheet">
 </head>
 
 <body>
@@ -19,7 +19,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Brand</a>
+        <a class="navbar-brand" href="#"><img src='../../images/kingdom-logo.png'></a>
       </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
       <form class="navbar-form text-align-center">
@@ -30,6 +30,8 @@
     </div>
     <!-- /.navbar-collapse -->
   </nav>
+
+  <div class="magic-kingdom-header"><img src="../../images/magic-kingdom.png"></div>
 
   <div class="btn-group show-time-dropdown">
     <button id="show-times" class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
@@ -54,15 +56,12 @@
     </ul>
   </div>
 
-  <div id="current-shows"></div>
-
-
   <div id="main-div">
     <div id="div-left-menu" class="col-md-3"></div>
     <div id="theme-park" class="col-md-9"></div>
   </div>
 
-  <div id="footer">Copyright &copy;</div>
+  <div id="footer">Copyright &copy; </div>
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>

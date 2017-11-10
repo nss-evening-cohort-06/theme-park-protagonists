@@ -1,45 +1,117 @@
 @import '_colors';
 
-#div-left-menu {
-	height: 900px;
-	width: 30%;
-	border: 1px solid black;
-	padding: 3px;
-	word-wrap: break-word;
+body {
+	cursor: pointer;
 }
 
-div.description {
+.navbar-brand {
+	margin: 0;
+	padding: 0;
+
+		img {
+			margin-left: 5px;
+			height: 50px;
+			width: 275px;
+	}
+}
+
+#searchBox {
+	width: 600px;
+	margin-left: 125px;
+	border-radius: 14px;
+}
+
+.magic-kingdom-header {
+	width: 65%;
+	height: 215px;
+	margin-left: 18%;
+	margin-bottom: 10px;
+	background-repeat: no-repeat;
+}
+
+#main-div {
+    padding: 15px;
+    margin-bottom: 15px;
+
+		.area {
+			color: white;
+  		border-radius: 15px;
+			height: 300px;
+			overflow: scroll;
+		}
+
+		h2 {
+			font-family: $header-font;
+		}
+		#area-1 { 
+    	background-color: $area1; 
+		}
+		#area-2 { 
+    	background-color: $area2; 
+	} 
+		#area-3 { 
+    	background-color: $area3; 
+	} 
+		#area-4 { 
+    	background-color: $area4; 
+	} 
+		#area-5{ 
+    	background-color: $area5; 
+	} 
+		#area-6{ 
+    	background-color: $area6; 
+	} 
+		#area-7 { 
+    	background-color: $area7; 
+	} 
+		#theme-park {
+			width: 70%;
+	}
+		#div-left-menu {
+			height: 900px;
+			width: 30%;
+			border: 1px solid black;
+			padding: 3px;
+			word-wrap: break-word;
+			border-radius: 15px;
+  		box-shadow: $box-shadow;
+			overflow: scroll;
+
+				.attraction-item {
+					font-family: $alt-font;
+					margin: 10px;
+			}
+	}
+}
+
+.description {
 	border: 1px solid black;
 	display: none;
+	background-color: gainsboro;
+  box-shadow: $box-shadow;
+  padding: 10px;
 }
 
-div.parkDescription {
+.parkDescription {
 	font-style: italic;
 }
 
 #theme-park {
 	width: 70%;
-	// border: 1px solid black;
 }
 
 #footer {
   margin-left: 43%;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   margin-top: 10px;
-  position: fixed;
   bottom: 0;
   left: 0;
-}
-
-#searchBox {
-	width: 600px;
-	margin-left: 200px;
-	border-radius: 14px;
 }
 
 .show-time-dropdown {
   margin-left: 40%;
   margin-bottom: 25px;
+	font-family: $header-font;
 }
 
 #show-times {
@@ -52,18 +124,24 @@ div.parkDescription {
   font-size: 20px;
 }
 
-.area {
-	border: solid black 2px;
-	height: 300px;
-	overflow: scroll;
-}
-
 .border {
 	border: solid orange 5px;
 }
 
-
-
 .blank {
 	border: 0px;
+}
+
+.upside-down {
+	background-image: url('https://i.cdn-sc.com/MediaVaultImages/58_thumbnail.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.flipdiv {
+	-moz-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
 }

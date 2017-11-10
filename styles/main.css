@@ -1,36 +1,73 @@
-#area-1 {
-  background-color: #730217; }
+body {
+  cursor: pointer; }
 
-#area-2 {
-  background-color: #D15530; }
+.navbar-brand {
+  margin: 0;
+  padding: 0; }
+  .navbar-brand img {
+    margin-left: 5px;
+    height: 50px;
+    width: 275px; }
 
-#area-3 {
-  background-color: #A37849; }
+#searchBox {
+  width: 600px;
+  margin-left: 125px;
+  border-radius: 14px; }
 
-#area-4 {
-  background-color: #2594D9; }
+.magic-kingdom-header {
+  width: 65%;
+  height: 215px;
+  margin-left: 18%;
+  margin-bottom: 10px;
+  background-repeat: no-repeat; }
 
-#area-5 {
-  background-color: #E73C81; }
+#main-div {
+  padding: 15px;
+  margin-bottom: 15px; }
+  #main-div .area {
+    color: white;
+    border-radius: 15px;
+    height: 300px;
+    overflow: scroll; }
+  #main-div h2 {
+    font-family: "Spirax", cursive; }
+  #main-div #area-1 {
+    background-color: #730217; }
+  #main-div #area-2 {
+    background-color: #D15530; }
+  #main-div #area-3 {
+    background-color: #A37849; }
+  #main-div #area-4 {
+    background-color: #2594D9; }
+  #main-div #area-5 {
+    background-color: #E73C81; }
+  #main-div #area-6 {
+    background-color: #3E4D8C; }
+  #main-div #area-7 {
+    background-color: #F2CF53; }
+  #main-div #theme-park {
+    width: 70%; }
+  #main-div #div-left-menu {
+    height: 900px;
+    width: 30%;
+    border: 1px solid black;
+    padding: 3px;
+    word-wrap: break-word;
+    border-radius: 15px;
+    box-shadow: 2px 2px black;
+    overflow: scroll; }
+    #main-div #div-left-menu .attraction-item {
+      font-family: "Quattrocento", serif;
+      margin: 10px; }
 
-#area-6 {
-  background-color: #3E4D8C; }
-
-#area-7 {
-  background-color: #F2CF53; }
-
-#div-left-menu {
-  height: 900px;
-  width: 30%;
+.description {
   border: 1px solid black;
-  padding: 3px;
-  word-wrap: break-word; }
+  display: none;
+  background-color: gainsboro;
+  box-shadow: 2px 2px black;
+  padding: 10px; }
 
-div.description {
-  border: 1px solid black;
-  display: none; }
-
-div.parkDescription {
+.parkDescription {
   font-style: italic; }
 
 #theme-park {
@@ -38,20 +75,15 @@ div.parkDescription {
 
 #footer {
   margin-left: 43%;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   margin-top: 10px;
-  position: fixed;
   bottom: 0;
   left: 0; }
 
-#searchBox {
-  width: 600px;
-  margin-left: 200px;
-  border-radius: 14px; }
-
 .show-time-dropdown {
   margin-left: 40%;
-  margin-bottom: 25px; }
+  margin-bottom: 25px;
+  font-family: "Spirax", cursive; }
 
 #show-times {
   width: 300px; }
@@ -61,13 +93,20 @@ div.parkDescription {
   text-align: center;
   font-size: 20px; }
 
-.area {
-  border: solid black 2px;
-  height: 300px;
-  overflow: scroll; }
-
 .border {
   border: solid orange 5px; }
 
 .blank {
   border: 0px; }
+
+.upside-down {
+  background-image: url("https://i.cdn-sc.com/MediaVaultImages/58_thumbnail.jpg");
+  background-repeat: no-repeat;
+  background-size: cover; }
+
+.flipdiv {
+  -moz-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg); }
