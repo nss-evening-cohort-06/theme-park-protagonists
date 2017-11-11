@@ -6,6 +6,7 @@ const data = require('./data');
 //if element with .time-item has and id, id is formatted to a moment object
 //start time is cloned and 59 mins added to declare end time (within the hour)
 //start and end time are passed through getAttractonsBetween()
+
 $('.time-item').click(function () {
   const timeString = $(this).attr('id');
   const startTime = moment(timeString, 'HH:mm a');
@@ -65,4 +66,3 @@ const initialize = () => {
 };
 
 module.exports = { initialize };
-

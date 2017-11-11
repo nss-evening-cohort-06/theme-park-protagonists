@@ -67,6 +67,3 @@ const clearBorders = () => {
 };
 
 module.exports = { printLeftDiv, printToMainDiv, drawBorder, clearBorders, goUpsideDown, clearUpsideDown };
-
-
-
