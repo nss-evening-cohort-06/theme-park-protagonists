@@ -135,14 +135,12 @@ const getOutOfOrders = (mainTicket) => {
 	  	}
 	}
 	OutOfOrdersArray = tempArray;
-	// console.log("out of orders",OutOfOrdersArray);
 };
 
 const isRideOpen = (attr) => {
 	maintenanceCheck(attr);
 	outOfOrderCheck(attr);
 	if ( ( !attr.out_of_order  && attr.maintenance === false ) ) {
-		// console.log(attr);
 		return(attr);
 	}
 };
@@ -151,10 +149,12 @@ const maintenanceCheck = (attrObject) => {
 	MaintenanceTickets.forEach(function(maintenanceTicket) {
 		let currentDate = moment();
 		if (attrObject.id === maintenanceTicket.attraction_id) {
-			let ticketDate = moment(maintenanceTicket.maintenance_date);
+			let ticketDate = moment(new Date(maintenanceTicket.maintenance_date));
 			let ticketDateEnd = moment(ticketDate).add(maintenanceTicket.maintenance_duration_hours, 'hours');
 			if (currentDate.isBetween(ticketDate,ticketDateEnd)) {
 				attrObject.maintenance = true;
+			} else {
+				attrObject.maintenance = false;
 			}
 		}
 	});
@@ -165,7 +165,7 @@ const outOfOrderCheck = (attrObject) => {
 		OutOfOrdersArray.forEach(function(maintenanceTicket) {
 			let currentDate = moment();
 			if (attrObject.id === maintenanceTicket.attraction_id) {
-				let ticketDate = moment(maintenanceTicket.maintenance_date);
+				let ticketDate = moment(new Date(maintenanceTicket.maintenance_date));
 				let ticketDateEnd = moment(ticketDate).add(maintenanceTicket.maintenance_duration_hours, 'hours');
 				if (currentDate > ticketDateEnd) {
 					attrObject.out_of_order = false;
